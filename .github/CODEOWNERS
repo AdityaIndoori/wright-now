@@ -1,0 +1,38 @@
+# CODEOWNERS file for WRight Now
+# This file defines code ownership and automatic review assignment
+
+# Global owners (default for everything)
+* @your-org/wright-now-team
+
+# Backend services
+/services/core-backend/ @your-org/backend-team
+/services/ai-service/ @your-org/ai-team
+/services/realtime-service/ @your-org/backend-team
+
+# Frontend clients
+/clients/web/ @your-org/frontend-team
+/clients/desktop/ @your-org/frontend-team
+/clients/mobile/ @your-org/mobile-team
+
+# Infrastructure & DevOps
+/docker-compose.yml @your-org/devops-team
+/kubernetes/ @your-org/devops-team
+/.github/workflows/ @your-org/devops-team
+/Dockerfile* @your-org/devops-team
+
+# Documentation
+/docs/ @your-org/wright-now-team
+/README.md @your-org/wright-now-team
+/CONTRIBUTING.md @your-org/wright-now-team
+
+# OpenSpec (project planning and specs)
+/openspec/ @your-org/architecture-team
+/ProjectDocs/ @your-org/architecture-team
+
+# Configuration files
+/.eslintrc* @your-org/frontend-team @your-org/backend-team
+/tsconfig*.json @your-org/frontend-team @your-org/backend-team
+/pytest.ini @your-org/ai-team
+/pyproject.toml @your-org/ai-team
+
+# Note: Update team names once GitHub organization and teams are created
