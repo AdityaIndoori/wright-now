@@ -78,3 +78,7 @@ jobs:
       - name: Run Black
         if: steps.check_ai.outputs.exists == 'true'
         run: black --check services/ai-service
+
+      - name: Placeholder (AI service not yet created)
+        if: steps.check_ai.outputs.exists == 'false'
+        run: echo "Black formatting will run once AI service is created in Sprint 0, Task 3.2"
