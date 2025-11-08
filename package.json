@@ -1,0 +1,30 @@
+{
+  "name": "wright-now",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fast, simple, and secure SaaS knowledge base platform",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdityaIndoori/wright-now.git"
+  },
+  "workspaces": [
+    "services/*",
+    "clients/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "npm run lint:eslint && npm run lint:prettier",
+    "lint:eslint": "echo 'ESLint not configured yet. Will be added in Sprint 0, Task 3.5'",
+    "lint:prettier": "echo 'Prettier not configured yet. Will be added in Sprint 0, Task 3.5'",
+    "test": "echo 'Tests not configured yet. Will be added in Sprint 0, Task 3.6'",
+    "test:backend": "echo 'Backend tests not configured yet'",
+    "test:ai": "echo 'AI service tests not configured yet'",
+    "test:frontend": "echo 'Frontend tests not configured yet'",
+    "build": "echo 'Build scripts will be added with service scaffolding'"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
