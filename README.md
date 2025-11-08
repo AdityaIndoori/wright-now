@@ -1,5 +1,9 @@
 # WRight Now
 
+[![Lint](https://github.com/AdityaIndoori/wright-now/actions/workflows/lint.yml/badge.svg)](https://github.com/AdityaIndoori/wright-now/actions/workflows/lint.yml)
+[![Test](https://github.com/AdityaIndoori/wright-now/actions/workflows/test.yml/badge.svg)](https://github.com/AdityaIndoori/wright-now/actions/workflows/test.yml)
+[![Build Docker Images](https://github.com/AdityaIndoori/wright-now/actions/workflows/build.yml/badge.svg)](https://github.com/AdityaIndoori/wright-now/actions/workflows/build.yml)
+
 **All your team's knowledge, instantly searchable. No setup required.**
 
 WRight Now is a fast, simple, and secure SaaS knowledge base platform designed to replace clunky incumbents like Confluence and Notion. Built with 100% FOSS (Free and Open-Source Software) for complete data ownership and zero vendor lock-in.

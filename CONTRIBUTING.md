@@ -125,6 +125,109 @@ Once approved and all checks pass:
 - Ensure commit message follows conventional format
 - Delete feature branch after merge
 
+## 🔧 CI/CD Pipeline
+
+WRight Now uses **GitHub Actions** for continuous integration and deployment.
+
+### Automated Workflows
+
+Three workflows run automatically on every pull request and push to `main`:
+
+#### 1. **Lint** (`.github/workflows/lint.yml`)
+Ensures code quality and consistent formatting:
+- **ESLint:** TypeScript/JavaScript linting for services and clients
+- **Prettier:** Code formatting validation
+- **Black:** Python code formatting for AI service
+
+```bash
+# Run locally before pushing
+npm run lint          # ESLint + Prettier
+black --check .       # Python formatting
+```
+
+#### 2. **Test** (`.github/workflows/test.yml`)
+Runs all test suites with coverage reporting:
+- **Jest:** Backend tests (Nest.js services)
+- **Pytest:** AI service tests (FastAPI)
+- **Vitest:** Frontend tests (React)
+- **Coverage Report:** Aggregates coverage across all services
+
+```bash
+# Run locally
+npm test              # All Node.js tests
+pytest --cov          # Python tests with coverage
+```
+
+#### 3. **Build** (`.github/workflows/build.yml`)
+Validates Docker image builds:
+- **Detect Service Changes:** Checks which services exist
+- **Multi-platform Builds:** Builds for linux/amd64 and linux/arm64
+- **Docker Layer Caching:** Speeds up builds using GitHub Actions cache
+- **Image Push:** Pushes images to GHCR on merge to `main`
+
+```bash
+# Build locally
+docker-compose build                    # All services
+docker build services/core-backend      # Individual service
+```
+
+### Required Status Checks
+
+All PRs must pass these checks before merging:
+
+✅ **Lint:**
+- ESLint (TypeScript/JavaScript)
+- Prettier (Code Formatting)
+- Black (Python Formatting)
+
+✅ **Test:**
+- Backend Tests (Jest)
+- AI Service Tests (Pytest)
+- Frontend Tests (Vitest)
+- Coverage Report
+
+✅ **Build:**
+- Build Summary
+- Detect Service Changes
+
+### Workflow Triggers
+
+- **Pull Request:** Runs on all PRs targeting `main`
+- **Push to Main:** Runs after PR merge (with image push enabled)
+- **Concurrency Control:** Cancels in-progress runs when new commits pushed
+
+### Viewing Workflow Results
+
+1. **On GitHub PR page:** Status checks appear at the bottom
+2. **Actions tab:** Full logs and detailed results
+3. **README badges:** Real-time status of `main` branch workflows
+
+### Troubleshooting Failed Checks
+
+If a workflow fails:
+
+1. **Click the "Details" link** in the PR checks to view logs
+2. **Common failures:**
+   - **Linting:** Run `npm run lint` and fix errors
+   - **Tests:** Run `npm test` locally, add missing tests
+   - **Build:** Verify Dockerfiles and dependencies
+
+3. **Fix and push:** CI will automatically re-run on new commits
+
+### Local Validation
+
+Before pushing, validate your changes locally:
+
+```bash
+# Full validation suite
+npm run lint          # Linting
+npm test             # All tests
+docker-compose build  # Docker builds
+
+# Or use a single command (if configured)
+npm run validate
+```
+
 ## 🧪 Testing Requirements
 
 All code changes must include tests:
