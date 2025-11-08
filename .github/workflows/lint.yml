@@ -57,15 +57,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-
-      - name: Install Black
-        run: pip install black
-
       - name: Check if AI service exists
         id: check_ai
         run: |
@@ -74,6 +65,16 @@ jobs:
           else
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Setup Python
+        if: steps.check_ai.outputs.exists == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Black
+        if: steps.check_ai.outputs.exists == 'true'
+        run: pip install black
 
       - name: Run Black
         if: steps.check_ai.outputs.exists == 'true'
