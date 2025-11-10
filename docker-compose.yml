@@ -1,0 +1,146 @@
+services:
+  # Main PostgreSQL database with pg_vector extension
+  postgres:
+    image: pgvector/pgvector:pg15
+    container_name: wrightnow-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-wrightnow}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./scripts/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    networks:
+      - wrightnow
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Redis cache for sessions and permission caching
+  redis:
+    image: redis:7-alpine
+    container_name: wrightnow-redis
+    command: redis-server --appendonly yes --appendfsync everysec
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - wrightnow
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  # Authentik PostgreSQL (separate instance for isolation)
+  authentik-postgres:
+    image: postgres:15-alpine
+    container_name: wrightnow-authentik-postgres
+    environment:
+      POSTGRES_DB: ${AUTHENTIK_POSTGRES_DB:-authentik}
+      POSTGRES_USER: ${AUTHENTIK_POSTGRES_USER:-authentik}
+      POSTGRES_PASSWORD: ${AUTHENTIK_POSTGRES_PASSWORD:-authentik}
+    volumes:
+      - authentik-postgres-data:/var/lib/postgresql/data
+    networks:
+      - wrightnow
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${AUTHENTIK_POSTGRES_USER:-authentik}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # Authentik Redis (separate instance for isolation)
+  authentik-redis:
+    image: redis:7-alpine
+    container_name: wrightnow-authentik-redis
+    command: redis-server --save 60 1 --loglevel warning
+    volumes:
+      - authentik-redis-data:/data
+    networks:
+      - wrightnow
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  # Authentik Server (OIDC IdP)
+  authentik-server:
+    image: ghcr.io/goauthentik/server:latest
+    container_name: wrightnow-authentik-server
+    command: server
+    environment:
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY:-this-is-a-secret-key-change-in-production}
+      AUTHENTIK_ERROR_REPORTING__ENABLED: ${AUTHENTIK_ERROR_REPORTING:-false}
+      AUTHENTIK_POSTGRESQL__HOST: authentik-postgres
+      AUTHENTIK_POSTGRESQL__NAME: ${AUTHENTIK_POSTGRES_DB:-authentik}
+      AUTHENTIK_POSTGRESQL__USER: ${AUTHENTIK_POSTGRES_USER:-authentik}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${AUTHENTIK_POSTGRES_PASSWORD:-authentik}
+      AUTHENTIK_REDIS__HOST: authentik-redis
+    ports:
+      - "9000:9000"
+      - "9443:9443"
+    volumes:
+      - authentik-media:/media
+      - authentik-templates:/templates
+    networks:
+      - wrightnow
+    depends_on:
+      authentik-postgres:
+        condition: service_healthy
+      authentik-redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:9000/api/v3/root/config/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # Authentik Worker (background tasks)
+  authentik-worker:
+    image: ghcr.io/goauthentik/server:latest
+    container_name: wrightnow-authentik-worker
+    command: worker
+    environment:
+      AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY:-this-is-a-secret-key-change-in-production}
+      AUTHENTIK_ERROR_REPORTING__ENABLED: ${AUTHENTIK_ERROR_REPORTING:-false}
+      AUTHENTIK_POSTGRESQL__HOST: authentik-postgres
+      AUTHENTIK_POSTGRESQL__NAME: ${AUTHENTIK_POSTGRES_DB:-authentik}
+      AUTHENTIK_POSTGRESQL__USER: ${AUTHENTIK_POSTGRES_USER:-authentik}
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${AUTHENTIK_POSTGRES_PASSWORD:-authentik}
+      AUTHENTIK_REDIS__HOST: authentik-redis
+    volumes:
+      - authentik-media:/media
+      - authentik-templates:/templates
+    networks:
+      - wrightnow
+    depends_on:
+      authentik-postgres:
+        condition: service_healthy
+      authentik-redis:
+        condition: service_healthy
+      authentik-server:
+        condition: service_healthy
+
+networks:
+  wrightnow:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  redis-data:
+  authentik-postgres-data:
+  authentik-redis-data:
+  authentik-media:
+  authentik-templates:
