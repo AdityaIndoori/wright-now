@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-ai
+  labels:
+    environment: staging
+    status: placeholder
+    managed-by: kustomize
+  annotations:
+    description: "PLACEHOLDER: AI Service (FastAPI) - To be deployed in Sprint 0 Task 3.2"
+    sprint: "Sprint 0 - Task 3.2"
+    deployment-guide: "See k8s/README.md#deploying-ai-service for deployment instructions"
+    pending: "true"

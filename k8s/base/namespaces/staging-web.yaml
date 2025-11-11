@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-web
+  labels:
+    environment: staging
+    status: placeholder
+    managed-by: kustomize
+  annotations:
+    description: "PLACEHOLDER: Web Client (React) - To be deployed in Sprint 0 Task 3.3"
+    sprint: "Sprint 0 - Task 3.3"
+    deployment-guide: "See k8s/README.md#deploying-web-client for deployment instructions"
+    pending: "true"

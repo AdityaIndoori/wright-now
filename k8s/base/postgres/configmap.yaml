@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-init
+  namespace: staging-infra
+  labels:
+    app: postgres
+    component: database
+data:
+  init-db.sh: |
+    #!/bin/bash
+    # PostgreSQL Initialization Script for WRight Now
+    # This script runs automatically when PostgreSQL starts for the first time
+    # It enables the pg_vector extension required for RAG search functionality
+
+    set -e
+
+    echo "🚀 Initializing WRight Now database..."
+
+    # Enable pg_vector extension for vector similarity search
+    echo "📦 Installing pg_vector extension..."
+    psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+        -- Enable pg_vector extension
+        CREATE EXTENSION IF NOT EXISTS vector;
+        
+        -- Verify installation
+        SELECT extname, extversion FROM pg_extension WHERE extname = 'vector';
+    EOSQL
+
+    echo "✅ pg_vector extension installed successfully"
+
+    # Create application-specific schemas (if needed for future sprints)
+    echo "📋 Creating application schemas..."
+    psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+        -- Create schema for application tables (Sprint 1)
+        CREATE SCHEMA IF NOT EXISTS app;
+        
+        -- Grant permissions
+        GRANT ALL PRIVILEGES ON SCHEMA app TO $POSTGRES_USER;
+        GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA app TO $POSTGRES_USER;
+        GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA app TO $POSTGRES_USER;
+        
+        -- Set default privileges for future tables
+        ALTER DEFAULT PRIVILEGES IN SCHEMA app GRANT ALL PRIVILEGES ON TABLES TO $POSTGRES_USER;
+        ALTER DEFAULT PRIVILEGES IN SCHEMA app GRANT ALL PRIVILEGES ON SEQUENCES TO $POSTGRES_USER;
+    EOSQL
+
+    echo "✅ Application schemas created successfully"
+
+    # Display configuration
+    echo "📊 Database configuration:"
+    psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+        SELECT 
+            current_database() as database,
+            current_user as user,
+            version() as pg_version;
+        
+        SELECT extname, extversion FROM pg_extension WHERE extname = 'vector';
+    EOSQL
+
+    echo "🎉 Database initialization complete!"

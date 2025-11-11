@@ -56,3 +56,9 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+
+# Kubernetes
+*.kubeconfig
+.kube/
+k8s/**/*-secrets.yaml
+k8s/**/*-secret.yaml

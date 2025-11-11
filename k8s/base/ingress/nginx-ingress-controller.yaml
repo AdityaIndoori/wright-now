@@ -1,0 +1,24 @@
+# NGINX Ingress Controller
+#
+# This file documents the nginx-ingress-controller installation for the kind cluster.
+# The controller is installed via the setup script, not directly from this file.
+#
+# Installation Command:
+# kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+#
+# The kind-specific configuration includes:
+# - NodePort service type (mapped via kind cluster config)
+# - Port mappings: 80:80, 443:443
+# - Hostport configuration for direct access
+#
+# Verification:
+# kubectl wait --namespace ingress-nginx \
+#   --for=condition=ready pod \
+#   --selector=app.kubernetes.io/component=controller \
+#   --timeout=90s
+#
+# After installation, Ingress resources in this cluster will be handled by nginx-ingress.
+#
+# Documentation:
+# - https://kind.sigs.k8s.io/docs/user/ingress/
+# - https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
