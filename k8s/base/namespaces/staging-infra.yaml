@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-infra
+  labels:
+    environment: staging
+    status: active
+    managed-by: kustomize
+  annotations:
+    description: "Infrastructure services (PostgreSQL, Redis, Authentik) for WRight Now staging environment"
+    sprint: "Sprint 0 - Task 1.4"
+    deployed: "true"

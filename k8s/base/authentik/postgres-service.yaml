@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: authentik-postgres
+  namespace: staging-infra
+  labels:
+    app: authentik-postgres
+    component: idp-database
+spec:
+  clusterIP: None  # Headless service for StatefulSet
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+      name: postgres
+  selector:
+    app: authentik-postgres

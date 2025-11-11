@@ -1,0 +1,44 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Note: No global namespace set - each resource defines its own namespace
+# to avoid conflicts with namespace resources
+
+commonLabels:
+  managed-by: kustomize
+  environment: staging
+
+resources:
+  # Namespaces
+  - namespaces/staging-infra.yaml
+  - namespaces/staging-core.yaml
+  - namespaces/staging-ai.yaml
+  - namespaces/staging-web.yaml
+  
+  # PostgreSQL (Main Database)
+  - postgres/statefulset.yaml
+  - postgres/service.yaml
+  - postgres/configmap.yaml
+  
+  # Redis (Main Cache)
+  - redis/deployment.yaml
+  - redis/service.yaml
+  - redis/pvc.yaml
+  
+  # Authentik PostgreSQL
+  - authentik/postgres-statefulset.yaml
+  - authentik/postgres-service.yaml
+  
+  # Authentik Redis
+  - authentik/redis-deployment.yaml
+  - authentik/redis-service.yaml
+  - authentik/pvcs.yaml
+  
+  # Authentik Application
+  - authentik/server-deployment.yaml
+  - authentik/worker-deployment.yaml
+  - authentik/services.yaml
+  - authentik/ingress.yaml
+  
+  # Ingress Controller (documentation only)
+  # Note: nginx-ingress-controller is installed via script, not Kustomize

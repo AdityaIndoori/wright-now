@@ -93,6 +93,37 @@ WRight Now is a fast, simple, and secure SaaS knowledge base platform designed t
 5. **Open your browser**
    Navigate to `http://localhost:3000`
 
+### Alternative: Kubernetes Development
+
+For production-like local development with Kubernetes:
+
+1. **Prerequisites**
+   - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+   - [kind](https://kind.sigs.k8s.io/) - Kubernetes in Docker
+   - [kubectl](https://kubernetes.io/docs/tasks/tools/) - Kubernetes CLI
+
+2. **Create Kubernetes cluster**
+   ```bash
+   ./scripts/k8s-setup.sh
+   ```
+
+3. **Deploy services**
+   ```bash
+   ./scripts/k8s-deploy.sh
+   ```
+
+4. **Access services**
+   - Authentik IdP: `http://localhost/auth/`
+   - PostgreSQL: Via `kubectl exec`
+   - Redis: Via `kubectl exec`
+
+5. **Teardown cluster**
+   ```bash
+   ./scripts/k8s-teardown.sh
+   ```
+
+For detailed Kubernetes setup instructions, see [Kubernetes Setup Guide](docs/kubernetes-setup.md).
+
 ## 📖 Documentation
 
 - **[Sprint Plan](ProjectDocs/SprintPlan.md)** - 6-month MVP development roadmap

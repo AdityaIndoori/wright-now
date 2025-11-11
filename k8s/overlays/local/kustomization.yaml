@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../../base
+
+# Local overlay for development environment
+# 
+# This overlay can be used to apply local-specific patches or configurations
+# For example:
+# - Resource limit overrides for local development
+# - Local-specific environment variables
+# - Additional services for debugging
+#
+# Current configuration uses base manifests without modifications.
+# Add patches or resources here as needed for local development.
+
+# Future overlays:
+# - k8s/overlays/staging/ - For cloud staging environment
+# - k8s/overlays/production/ - For production environment

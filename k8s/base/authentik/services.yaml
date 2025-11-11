@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: authentik-server
+  namespace: staging-infra
+  labels:
+    app: authentik-server
+    component: idp-server
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9000
+      targetPort: 9000
+      protocol: TCP
+      name: http
+    - port: 9443
+      targetPort: 9443
+      protocol: TCP
+      name: https
+  selector:
+    app: authentik-server
