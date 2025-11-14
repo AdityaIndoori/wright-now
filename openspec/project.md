@@ -20,19 +20,21 @@
 
 ## Tech Stack
 
-### Frontend
-- **Web:** React with modern hooks and functional components
-- **Desktop:** Electron wrapper (Windows, macOS, Linux) with native OS integrations
-- **Mobile:** React Native (iOS & Android) with offline-first architecture
-- **Real-time Collaboration:** Yjs (CRDT library) for conflict-free document merging
+### Frontend (Finalized Nov 2025)
+- **Web:** React 18 + TypeScript with Vite build tool - Modern hooks, functional components, and Yjs CRDT for real-time collaboration
+- **Mobile & Desktop:** Flutter 3.x (Dart) - Single codebase for iOS, Android, Windows, macOS, and Linux with native performance
+- **Real-time Collaboration:** Yjs (CRDT library) for conflict-free document merging (web-native, Flutter uses custom sync)
 - **Offline Storage:** 
   - Web: IndexedDB (y-indexeddb)
-  - Desktop: SQLite (y-leveldb)
-  - Mobile: SQLite (y-sqlite)
+  - Mobile/Desktop (Flutter): Hive or Isar for local storage
+
+**Architecture Decision Record (Nov 2025):**
+- **Why React for Web:** Mature ecosystem, best-in-class Yjs integration, performance meets NFRs (<100ms modal open), large talent pool, rich component libraries
+- **Why Flutter for Mobile/Desktop:** Single codebase across 5 platforms (vs 3 separate Electron + React Native codebases), native performance, consistent UI/UX, reduced maintenance overhead, estimated 1-2 weeks time savings in Sprint 11
 
 ### Backend Services
 - **Core Backend:** Nest.js (TypeScript) - Handles AuthZ, CRUD, permissions, teams, notifications
-- **AI Service:** FastAPI (Python) - Handles RAG search, embeddings, folder suggestions, auto-tagging
+- **AI Service:** FastAPI (Python 3.11+) with LangChain - Handles RAG search, embeddings, folder suggestions, auto-tagging
 - **Real-time Service:** Nest.js WebSocket Gateway + y-websocket for live document collaboration
 - **API Gateway:** Nest.js - JWT validation, routing, rate limiting
 
@@ -43,15 +45,19 @@
 - **Inter-Service Communication:** gRPC with Protocol Buffers (proto3)
 
 ### AI/ML Stack
-- **Embeddings:** Modern open-source models (e.g., for text vectorization)
-- **LLM:** Open-source models (e.g., Llama 3 8B) for RAG synthesis and content analysis
+- **Embeddings:** sentence-transformers or OpenAI API for text vectorization (self-hosted preferred for cost savings)
+- **LLM:** Open-source models (e.g., Llama 3 8B) for RAG synthesis and content analysis, or OpenAI/Anthropic APIs
 - **Vector Search:** PostgreSQL pg_vector for semantic search
+- **Framework:** LangChain for RAG pipeline orchestration
+
+**AI Stack Rationale (Nov 2025):**
+- **Why FastAPI + Python:** Superior AI/ML ecosystem (LangChain, transformers, sentence-transformers), self-hosted embeddings reduce costs vs API-only approach, faster AI feature development, industry standard for AI microservices
 
 ### DevOps & Infrastructure
 - **Containerization:** Docker
 - **Orchestration:** Kubernetes
 - **CI/CD:** GitHub Actions + ArgoCD (GitOps)
-- **Testing:** Jest (Backend), Pytest (AI Service), Vitest (Frontend), Playwright (E2E)
+- **Testing:** Jest (Backend), Pytest (AI Service), Vitest (Web), flutter test (Mobile/Desktop), Playwright (E2E)
 
 ## Project Conventions
 
@@ -123,8 +129,10 @@
   - Test: `PermissionsService.can()` logic, privilege calculation, cache behavior
 - **AI Service (Pytest):** Mock gRPC calls, mock LLM responses
   - Test: Query builders, vector search pipelines, permission filtering
-- **Frontend (Vitest):** Mock props, hooks, context
-  - Test: Component rendering, user interactions, state management
+- **Web Client (Vitest):** Mock props, hooks, context
+  - Test: React component rendering, user interactions, state management
+- **Mobile/Desktop Client (flutter test):** Mock services and state
+  - Test: Flutter widget behavior, navigation, offline sync logic
 
 **Level 2: Integration Tests (Connected)**
 - **Testcontainers:** Spin up ephemeral PostgreSQL, Redis, and IdP instances

@@ -51,11 +51,11 @@ AI: [Implements in Act Mode]
 | 2.4 | Environment configuration management | N/A (configuration task) |
 | **3** | **Project Scaffolding** | |
 | 3.1 | Initialize Nest.js Core Backend service | "Create a proposal to add Nest.js Core Backend service with SOLID architecture" |
-| 3.2 | Initialize FastAPI AI service | "Create a proposal to add FastAPI AI service with Python project structure" |
-| 3.3 | Initialize React web client | "Create a proposal to add React web client with TypeScript and modern tooling" |
+| 3.2 | Initialize FastAPI AI service | "Create a proposal to add FastAPI AI service with Python project structure and LangChain integration" |
+| 3.3 | Initialize React web client | "Create a proposal to add React web client with TypeScript, Vite build tool, and Yjs CRDT for collaboration" |
 | 3.4 | Set up monorepo structure with workspaces | "Create a proposal to add monorepo workspace structure with shared packages" |
 | 3.5 | Configure ESLint, Prettier, Black | "Create a proposal to add code formatting and linting configuration" |
-| 3.6 | Set up Jest, Pytest, Vitest test frameworks | "Create a proposal to add testing frameworks with TDD configuration" |
+| 3.6 | Set up Jest, Pytest, Vitest test frameworks | "Create a proposal to add testing frameworks with TDD configuration:<br>- Jest (TypeScript) for Core Backend<br>- Pytest (Python) for AI Service<br>- Vitest + React Testing Library for web client<br>- Flutter test framework (Dart) for mobile/desktop (Sprint 11 prep)<br>- Testcontainers for integration tests<br>- Coverage reporting (>80% requirement across all services)" |
 | **4** | **gRPC Setup** | |
 | 4.1-4.4 | Define protos and generate clients | "Create a proposal to add gRPC communication layer with permissions.proto and ai.proto" |
 | **5** | **Testing Infrastructure** | |
@@ -283,23 +283,49 @@ AI: [Implements in Act Mode]
 
 ---
 
-## Sprint 11: Desktop & Mobile Clients
+## Sprint 11: Multi-Platform Flutter App
 
 **Duration:** Weeks 23-24  
-**Goal:** Package desktop app and create mobile clients
+**Goal:** Single Flutter codebase for mobile and desktop platforms
 
 ### Tasks & OpenSpec Prompts
 
 | # | Task | OpenSpec Proposal Prompt |
 |---|------|--------------------------|
-| **1** | **Desktop (Electron)** | |
-| 1.1-1.6 | Build desktop app | "Create a proposal to add Electron desktop application with global hotkey, native notifications, and offline storage" |
-| **2** | **Mobile (React Native)** | |
-| 2.1-2.8 | Build mobile apps | "Create a proposal to add React Native mobile applications for iOS and Android with offline-first editing" |
+| **1** | **Flutter Project Setup** | |
+| 1.1 | Initialize Flutter project | "Create a proposal to add Flutter multi-platform application with shared codebase for mobile and desktop" |
+| 1.2 | Configure platform-specific builds | "Create a proposal to configure Flutter build targets for iOS, Android, Windows, macOS, and Linux" |
+| 1.3 | Set up state management | "Create a proposal to add Flutter state management with Provider or Riverpod" |
+| 1.4 | Implement offline-first architecture | "Create a proposal to add offline-first data persistence with Flutter (Hive/Isar + sync logic)" |
+| **2** | **Mobile Implementation** | |
+| 2.1 | Mobile-optimized layouts | "Create a proposal to add mobile-optimized responsive layouts with platform adaptations (iOS/Android)" |
+| 2.2 | Native integrations (camera, files) | "Create a proposal to add native mobile integrations (camera, file picker, biometrics)" |
+| 2.3 | Push notifications | "Create a proposal to add push notification support for iOS and Android" |
+| 2.4 | Deep linking | "Create a proposal to add deep linking and universal links for mobile apps" |
+| **3** | **Desktop Implementation** | |
+| 3.1 | Desktop-optimized layouts | "Create a proposal to add desktop-optimized layouts with keyboard shortcuts and window management" |
+| 3.2 | Native desktop integrations | "Create a proposal to add desktop native integrations (file system, tray icon, global shortcuts)" |
+| 3.3 | Auto-updater | "Create a proposal to add auto-update mechanism for desktop apps" |
+| **4** | **Cross-Platform Features** | |
+| 4.1 | Shared authentication flow | "Create a proposal to add authentication flow reusing web OIDC logic" |
+| 4.2 | Real-time sync | "Create a proposal to add real-time document synchronization with WebSocket reconnection" |
+| 4.3 | Offline editing & conflict resolution | "Create a proposal to add offline editing with automatic conflict resolution on reconnection" |
+| **5** | **Testing & Deployment** | |
+| 5.1 | Platform-specific testing | "Create a proposal to add Flutter integration tests for all platforms" |
+| 5.2 | iOS App Store setup | "Create a proposal to add iOS App Store deployment pipeline (TestFlight + Production)" |
+| 5.3 | Google Play Store setup | "Create a proposal to add Google Play Store deployment pipeline (internal testing + production)" |
+| 5.4 | Desktop installers | "Create a proposal to add desktop app packaging (MSI for Windows, DMG for macOS, DEB/RPM for Linux)" |
 
-**Deliverable:** Desktop apps (3 platforms) and mobile apps (2 platforms)
+**Deliverable:** Single Flutter app running on iOS, Android, Windows, macOS, Linux (5 platforms from 1 codebase)
 
-**Risk:** Mobile development can be complex. Start planning in Sprint 8.
+**Benefits vs Original Plan:**
+- ✅ 1 codebase instead of 3 (Electron + iOS RN + Android RN)
+- ✅ Native performance on all platforms
+- ✅ Consistent UI/UX across platforms
+- ✅ Estimated time savings: 1-2 weeks
+- ✅ Easier maintenance (single Flutter codebase)
+
+**Risk:** Less mature than original plan. Contingency: Cut mobile (Sprint 11) if behind schedule and launch web/desktop only.
 
 ---
 
@@ -416,7 +442,7 @@ For each sprint, you'll create proposals using the prompts above. The workflow:
 | **Sprint 2** | Auth integration complexity | Prototype OIDC flow early, use Testcontainers |
 | **Sprint 4** | Yjs CRDT sync issues | Dedicate spike in Sprint 0, thorough E2E testing |
 | **Sprint 6** | LLM inference latency | Load test early, consider model quantization |
-| **Sprint 11** | React Native complexity | Start mobile planning in Sprint 8, consider web-first |
+| **Sprint 11** | Flutter multi-platform complexity | Start planning in Sprint 8, web-first approach, can cut mobile if needed |
 
 ### Contingency Plans
 
@@ -430,13 +456,13 @@ For each sprint, you'll create proposals using the prompts above. The workflow:
 
 ### Minimum Viable Team (MVP in 6 months)
 - 1 Full-Stack Engineer (Backend + Frontend)
-- 1 Backend Engineer (Nest.js + FastAPI)
+- 1 Backend Engineer (Nest.js + Python/FastAPI)
 - 0.5 DevOps Engineer (part-time)
 
 ### Optimal Team (MVP in 4-5 months)
-- 2 Backend Engineers (one focused on AI service)
-- 1 Frontend Web Engineer
-- 1 Mobile Engineer
+- 2 Backend Engineers (one focused on AI service with Python/FastAPI)
+- 1 Frontend Web Engineer (React + TypeScript)
+- 1 Flutter Engineer (Mobile + Desktop)
 - 1 DevOps Engineer
 - 0.5 QA Engineer
 
