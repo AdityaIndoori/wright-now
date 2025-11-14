@@ -35,18 +35,23 @@ Our design is driven by these non-negotiable targets from PRD v5:
 
 A microservices architecture is chosen to meet the requirements of scalability, maintainability, and technological separation (e.g., Python for AI, TypeScript for backend).
 
-### **2.1 Technology Stack**
+### **2.1 Technology Stack (Finalized Nov 2025)**
 
 * **Identity & AuthN:** Pluggable Open-Source IdP via OIDC. **(e.g., Authentik, Keycloak)**. Manages user sign-up, sign-in, and issues JWTs. (Per PRD Tier 5 SAML requirement).  
 * **Core Backend (AuthZ):** **Nest.js** (TypeScript) \- For robust, TDD-friendly, and structured enterprise-grade code.  
-* **AI Service:** **FastAPI** (Python) \- For its high performance and native integration with Python-based LLM libraries.  
+* **AI Service:** **FastAPI** (Python 3.11+) \- For its high performance and native integration with Python-based LLM libraries (LangChain, sentence-transformers, OpenAI SDK).  
 * **Real-time Service:** **Nest.js** (WebSocket Adapter) \- Managing WebSocket connections and Yjs-based CRDT state.  
-* **Database (Relational):** **PostgreSQL** (PRD 1.8) \- For robust relational data.  
+* **Database (Relational):** **PostgreSQL 16** (PRD 1.8) \- For robust relational data.  
 * **Database (Vector):** **PostgreSQL** with pg\_vector extension (PRD 1.8) \- For storing and querying text embeddings.  
-* **Cache:** **Redis** \- For caching sessions and, most critically, permission-check results (to meet NFR 2.1).  
-* **Clients (Web/Desktop):** **React** (or similar) bundled with **Electron** (PRD 4.2).  
-* **Clients (Mobile):** **React Native** (PRD 4.3).  
+* **Cache:** **Redis 7** \- For caching sessions and, most critically, permission-check results (to meet NFR 2.1).  
+* **Web Client:** **React 18 + TypeScript** with **Vite** build tool (PRD 4.1) \- For mature web ecosystem, Yjs CRDT support, and performance.  
+* **Mobile & Desktop Clients:** **Flutter 3.x (Dart)** (PRD 4.2, 4.3) \- Single codebase for iOS, Android, Windows, macOS, and Linux. Native performance with consistent UI/UX.  
 * **CRDT Library:** **Yjs** (PRD 1.8) \- For all real-time collaboration and offline-first sync.
+
+**Architecture Decision Record (Nov 2025):**
+* **Why React for Web:** Mature ecosystem, rich component libraries, best-in-class Yjs integration, performance meets NFRs, large talent pool.
+* **Why Flutter for Mobile/Desktop:** Single codebase across 5 platforms (vs 3 separate Electron + React Native codebases), native performance, consistent UI/UX, reduced Sprint 11 complexity (estimated 1-2 weeks time savings).
+* **Why FastAPI + Python for AI:** Superior AI/ML ecosystem (LangChain, transformers, sentence-transformers), self-hosted embeddings (cost savings vs API-only), faster AI feature development, industry standard for AI microservices.
 
 ### **2.2 High-Level Architecture (C2)**
 
@@ -421,11 +426,14 @@ This section defines the synchronous, low-latency communication contracts betwee
 ## **6\. Cross-Platform & Offline Sync Design**
 
 * **Core Principle:** The Yjs CRDT model (PRD 1.8) *is* the offline model.  
-* **Auth Model:** The client (Web, Desktop, Mobile) is responsible for the OIDC flow. It must securely store the **Refresh Token** (in localStorage for web, native Keychain for Mobile/Desktop). The Access Token (JWT) is short-lived.  
+* **Auth Model:** The client (Web, Desktop, Mobile) is responsible for the OIDC flow. It must securely store the **Refresh Token** (in localStorage for web, native Keychain/SecureStorage for Mobile/Desktop). The Access Token (JWT) is short-lived.  
 * **Offline Storage (PRD 4.2, 4.3):**  
-  1. **Web:** IndexedDB (using y-indexeddb)  
-  2. **Desktop (Electron):** SQLite (using y-leveldb or similar)  
-  3. **Mobile (RN):** SQLite (using y-sqlite)  
+  1. **Web (React):** IndexedDB (using y-indexeddb)  
+  2. **Mobile (Flutter):** Hive or Isar (using y-crdt Dart bindings or custom sync logic)  
+  3. **Desktop (Flutter):** Hive or Isar (using y-crdt Dart bindings or custom sync logic)  
+* **Platform-Specific Implementations:**  
+  * **Web:** Uses standard web APIs (IndexedDB, WebSocket, localStorage).  
+  * **Flutter (Mobile/Desktop):** Uses Flutter packages for platform abstraction (flutter\_secure\_storage for tokens, hive/isar for offline storage, web\_socket\_channel for sync).
 * **Sync Workflow (TDD-minded):**  
   1. **Test Case:** User edits Doc A offline. User B edits Doc A online. User A comes back online.  
   2. **User A (Offline):** Edits are saved *only* to the local Yjs store (IndexedDB).  
@@ -457,7 +465,8 @@ This applies to all services. No feature pull request will be approved unless it
   * **Goal:** Test individual functions/classes in isolation.  
   * **Core-Service (Jest):** Mock dependencies (DB, Cache). Test PermissionsService logic (highest privilege, cache hits, etc.).  
   * **AI-Service (Pytest):** Mock gRPC calls, mock LLMs. Test query builders and pipeline logic.  
-  * **Frontend (Vitest):** Mock props and hooks. Test component rendering.  
+  * **Web Client (Vitest):** Mock props and hooks. Test React component rendering.  
+  * **Mobile/Desktop Client (flutter test):** Mock services and state. Test Flutter widget behavior.
 * **Level 2: Integration Tests (Slower & Connected)**  
   * **Goal:** Test the "seams" between services or a service and its real infrastructure.  
   * **Backend (Testcontainers):** Spin up ephemeral Postgres, Redis, and IdP instances. Test that PermissionsService can *actually* query the DB and cache.  
