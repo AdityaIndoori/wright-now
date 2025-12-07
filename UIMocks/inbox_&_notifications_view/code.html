@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inbox</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#135bec",
+            "background-light": "#FFFFFF",
+            "background-dark": "#101622",
+            "item-read-light": "#F7F7F7",
+            "item-read-dark": "#18202D",
+            "text-light-primary": "#333333",
+            "text-dark-primary": "#FFFFFF",
+            "text-light-secondary": "#6B7280",
+            "text-dark-secondary": "#92a4c9",
+            "border-light": "#E5E7EB",
+            "border-dark": "#324467",
+            "sidebar-dark": "#0B111B",
+            "sidebar-light": "#F9FAFB"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full group/design-root overflow-x-hidden">
+<div class="flex h-full grow">
+<aside class="flex h-screen w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111722] p-4 shrink-0 sticky top-0">
+<div class="flex h-full flex-col justify-between">
+<div class="flex flex-col gap-4">
+<a href="../home/code.html" class="flex gap-3 items-center hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg p-2 transition-colors">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Workspace logo" style='background-image: url("../WrightNowLogo.png");'></div>
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-base font-medium leading-normal">WRight Now</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Workspace</p>
+</div>
+</a>
+<div class="flex flex-col gap-1 mt-2">
+<a class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-[#232f48]" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-white text-xl">inbox</span>
+<p class="text-primary dark:text-white text-sm font-medium leading-normal">Inbox</p>
+</div>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="../my_tasks_view/code.html">
+<span class="material-symbols-outlined text-gray-500 dark:text-white text-xl">check_circle</span>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">My Tasks</p>
+</a>
+</div>
+<div class="flex flex-col gap-1 pl-3 border-l border-gray-200 dark:border-gray-700 mt-3">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Spaces</span>
+</a>
+<div class="flex flex-col gap-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-2">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Project Alpha</span>
+</a>
+<div class="flex flex-col gap-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-2">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="../editor_page_with_rich_content/code.html">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">draft</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Q3 Planning Session</span>
+</a>
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">draft</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Meeting Notes</span>
+</a>
+</div>
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Engineering</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 border-t border-gray-200 dark:border-gray-800 pt-4">
+<a href="../admin_panel_-_users_view/code.html" class="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="Olivia Wright's avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7IotO1fkXFlfqUpwn7I75-PoEiY3EZqNdVfLBUS2SPyRt-AEOkay632tK0pWJQZalI1nMm-1pCrhISc3H392A13a7XZ51nq4t0Th83m-93be41ufHRXSDKS1HWxDDhKnfJ-MqdVJv-C6flbVWS5pNQzrPc7qVT4fHfY9LXBGnd4rbw5hY_4MQyXmyPxteXSGh7BosqBOj8Fj2WyvjbXJ3tsNlcexB5BhtQy48QMuOHk4A5vDEa_67UShCpKk5Vc2x2wc-pIjcqEo");'></div>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Olivia Wright</p>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-y-auto p-8">
+<div class="w-full max-w-4xl mx-auto flex-shrink-0">
+<div class="relative mb-8">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-2xl">search</span>
+<input onclick="window.location.href='../global_search_command_bar_(overlay)/code.html'" class="w-full h-14 pl-12 pr-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111722] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent text-base cursor-pointer" placeholder="Search, Ask or Do anything..." type="text" readonly/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-md px-2 py-1">Cmd+K</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 -mr-2">
+<div class="max-w-4xl mx-auto">
+<div class="flex flex-wrap items-center justify-between gap-3 p-4">
+<h1 class="text-text-light-primary dark:text-text-dark-primary tracking-light text-[32px] font-bold leading-tight min-w-72">Inbox</h1>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-medium leading-normal gap-2 transition-opacity hover:opacity-90">
+<span class="material-symbols-outlined text-base">done_all</span>
+<span class="truncate">Mark all as read</span>
+</button>
+</div>
+<div class="pb-3 px-4">
+<div class="flex border-b border-border-light dark:border-border-dark gap-8">
+<a class="flex items-center justify-center border-b-[3px] border-b-transparent text-text-light-secondary dark:text-text-dark-secondary pb-[13px] pt-4 transition-colors hover:text-text-light-primary dark:hover:text-text-dark-primary" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">All</p>
+</a>
+<a class="flex items-center justify-center border-b-[3px] border-b-primary text-text-light-primary dark:text-text-dark-primary pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Unread</p>
+</a>
+<a class="flex items-center justify-center border-b-[3px] border-b-transparent text-text-light-secondary dark:text-text-dark-secondary pb-[13px] pt-4 transition-colors hover:text-text-light-primary dark:hover:text-text-dark-primary" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Mentions</p>
+</a>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex gap-4 bg-background-light dark:bg-background-dark px-4 py-4 justify-between border-b border-border-light dark:border-border-dark cursor-pointer transition-colors hover:bg-black/5 dark:hover:bg-white/5">
+<div class="flex items-start gap-4 flex-1">
+<div class="relative w-10">
+<div class="absolute -left-1 top-4 h-2.5 w-2.5 rounded-full bg-primary"></div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-10 w-10" data-alt="Avatar of David" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzaIaHo1gE8ZXH8Os04Rv4dxUQUQ58gxV_f_Q6o-08UmDZvyQ-m23Wmhgs8QOGo9PFjyGTyYRCL0wNXZir1uxqUVVcuSgB8BMAYScU71wj37aaakwkXzYtUavOkDehyPeixoV-X6kmkGL1EzDdpYq4w87o5_RUEIXKH_psfdP1HH_hcyw4OxDQTsryubUIGepcGcHTYlGi14Vwfq1DF12z-hnEzD_rN-TtwGbA04drTtLDcKVScZCh2iyNGoPeQioCFYaSpiw-x-g");'></div>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<p class="text-text-light-primary dark:text-text-dark-primary text-base font-medium leading-normal">David mentioned you in <span class="font-bold">API Migration Plan</span></p>
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal border-l-2 border-border-light dark:border-border-dark pl-2">Just a heads-up, I've added a new section on the authentication flow.</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">5m ago</p></div>
+</div>
+<div class="flex gap-4 bg-background-light dark:bg-background-dark px-4 py-4 justify-between border-b border-border-light dark:border-border-dark cursor-pointer transition-colors hover:bg-black/5 dark:hover:bg-white/5">
+<div class="flex items-start gap-4 flex-1">
+<div class="relative w-10">
+<div class="absolute -left-1 top-4 h-2.5 w-2.5 rounded-full bg-primary"></div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-10 w-10" data-alt="Avatar of Michael" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFlxdRdcinTd7eE0C2XA8p1aCjGlwY4CdlW7UdSIMSHPZDth5nnWUgDda9Z6SWv9r4b-erF08Wpnm7McPIxFMCyq7A3G5For4rqcnCv_9N9sxmVeNHaiJ8eJgYf10f-dBH-hcBXaPWLCQBzANOt35jvazD03zj_uWs9mx6g8jnCa4PX1nWY_S09VFp_gO4eABi-lHZHTRhpGDM7CWNKdt91MI_V32ADGtIDXemgt2KhgNybEEPbcMvo78Wr2JF5whg2TRWTlieWFU");'></div>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<p class="text-text-light-primary dark:text-text-dark-primary text-base font-medium leading-normal">Michael edited the <span class="font-bold">Project Phoenix brief</span></p>
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal border-l-2 border-border-light dark:border-border-dark pl-2">Updated the project timeline and key deliverables.</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">2h ago</p></div>
+</div>
+<div class="flex gap-4 bg-item-read-light dark:bg-item-read-dark px-4 py-4 justify-between border-b border-border-light dark:border-border-dark cursor-pointer transition-colors hover:bg-black/10 dark:hover:bg-white/10">
+<div class="flex items-start gap-4 flex-1">
+<div class="w-10">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-10 w-10" data-alt="Avatar of Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7IotO1fkXFlfqUpwn7I75-PoEiY3EZqNdVfLBUS2SPyRt-AEOkay632tK0pWJQZalI1nMm-1pCrhISc3H392A13a7XZ51nq4t0Th83m-93be41ufHRXSDKS1HWxDDhKnfJ-MqdVJv-C6flbVWS5pNQzrPc7qVT4fHfY9LXBGnd4rbw5hY_4MQyXmyPxteXSGh7BosqBOj8Fj2WyvjbXJ3tsNlcexB5BhtQy48QMuOHk4A5vDEa_67UShCpKk5Vc2x2wc-pIjcqEo");'></div>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-base font-medium leading-normal">Sarah commented on the <span class="font-bold text-text-light-secondary dark:text-text-dark-secondary">Q3 Roadmap</span></p>
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal border-l-2 border-border-light dark:border-border-dark pl-2">Could we also consider adding the integration with the new CRM?</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">Yesterday</p></div>
+</div>
+<div class="flex gap-4 bg-item-read-light dark:bg-item-read-dark px-4 py-4 justify-between border-b border-border-light dark:border-border-dark cursor-pointer transition-colors hover:bg-black/10 dark:hover:bg-white/10">
+<div class="flex items-start gap-4 flex-1">
+<div class="w-10">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-10 w-10" data-alt="Avatar of Chris" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBy5MCJbRihfnG3SaJsACoe2sabbOTM2hdSyjoCReEcUVcJuCXgxdUUX92a6emyYWNrTxBxY2veTYtAtWDRswsR9TEEZkPByy0-0Fj44iQUqCbSL1v4BVLo6-vaWIvyYm9O4dBzN40z5_vOryO7yGHqS79einjeWtZ1n1dsDy0WvB5qWk-3FAJn6QIe7eWisthy3nhDDJiAIFKqb093dRT2V7oV0jCn1_FJF0eow1qv_4eW5b4hHHcdvXrgVQlR_QPz-nU0M4v5LR8");'></div>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-base font-medium leading-normal">Chris updated the <span class="font-bold text-text-light-secondary dark:text-text-dark-secondary">Marketing Campaign</span></p>
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal border-l-2 border-border-light dark:border-border-dark pl-2">Added new assets for the social media push next week.</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-text-light-secondary dark:text-text-dark-secondary text-sm font-normal leading-normal">2 days ago</p></div>
+</div>
+<div class="flex flex-col items-center justify-center text-center gap-4 p-16">
+<div class="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-3xl text-primary">celebration</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-text-light-primary dark:text-text-dark-primary font-bold text-lg">You're all caught up!</p>
+<p class="text-text-light-secondary dark:text-text-dark-secondary text-sm">There are no new unread notifications.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

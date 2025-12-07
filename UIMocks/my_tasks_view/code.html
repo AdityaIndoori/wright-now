@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Tasks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+<div class="flex h-screen w-full">
+<aside class="flex h-screen w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111722] p-4 shrink-0">
+<div class="flex h-full flex-col justify-between">
+<div class="flex flex-col gap-4">
+<a href="../home/code.html" class="flex gap-3 items-center hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg p-2 transition-colors">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Workspace logo" style='background-image: url("../WrightNowLogo.png");'></div>
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-base font-medium leading-normal">WRight Now</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Workspace</p>
+</div>
+</a>
+<div class="flex flex-col gap-1 mt-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="../inbox_&_notifications_view/code.html">
+<span class="material-symbols-outlined text-gray-500 dark:text-white text-xl">inbox</span>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Inbox</p>
+</a>
+<a class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-[#232f48]" href="../my_tasks_view/code.html">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-white text-xl">check_circle</span>
+<p class="text-primary dark:text-white text-sm font-medium leading-normal">My Tasks</p>
+</div>
+</a>
+</div>
+<div class="flex flex-col gap-1 pl-3 border-l border-gray-200 dark:border-gray-700 mt-3">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Spaces</span>
+</a>
+<div class="flex flex-col gap-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-2">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Project Alpha</span>
+</a>
+<div class="flex flex-col gap-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-2">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="../editor_page_with_rich_content/code.html">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">draft</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Q3 Planning Session</span>
+</a>
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">draft</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Meeting Notes</span>
+</a>
+</div>
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Engineering</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 border-t border-gray-200 dark:border-gray-800 pt-4">
+<a href="../admin_panel_-_users_view/code.html" class="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="Alex Hartman's avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9q5PCGhoC_jYNP5WJkpM3x-evLQLnLht1gQWvndmLFjGs5bhNq-pG5OwMLNB5xWZVGkYkEVQ7RslFPB7M6k1wIgk0BU9dbI4Mi6fA62t_jD91LArb42cMB5WMHjBYOxOc-RcUQHC-IGVWA-Q7Px5pxMQRrV41vzcSCF3TxKjq5i1UCQTBoHpJH6SUXdQwOtzdKyTCOhoRP9fLX-vn5pDn00rTvGysedmt-bf4qLtKRelCNPl13Ifgh7CvQBgk_RfbxlcqQbW8MXI");'></div>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Alex Hartman</p>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-y-auto p-8">
+<div class="w-full max-w-4xl mx-auto flex-shrink-0">
+<div class="relative mb-8">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-2xl">search</span>
+<input onclick="window.location.href='../global_search_command_bar_(overlay)/code.html'" class="w-full h-14 pl-12 pr-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111722] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent text-base cursor-pointer" placeholder="Search, Ask or Do anything..." type="text" readonly/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-md px-2 py-1">Cmd+K</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 -mr-2">
+<div class="w-full max-w-4xl mx-auto">
+<div class="flex flex-wrap justify-between items-center gap-3 mb-8">
+<h1 class="text-gray-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight">My Tasks</h1>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors duration-200 hover:bg-primary/90">
+<span class="material-symbols-outlined mr-2 text-base">add</span>
+<span class="truncate">New Task</span>
+</button>
+</div>
+<div class="flex gap-4 mb-6">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 dark:bg-[#232f48] text-primary dark:text-white text-sm font-medium">
+<span class="material-symbols-outlined text-base">list</span>
+All Tasks
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50 text-gray-700 dark:text-gray-300 text-sm font-medium">
+<span class="material-symbols-outlined text-base">schedule</span>
+Today
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50 text-gray-700 dark:text-gray-300 text-sm font-medium">
+<span class="material-symbols-outlined text-base">upcoming</span>
+Upcoming
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50 text-gray-700 dark:text-gray-300 text-sm font-medium">
+<span class="material-symbols-outlined text-base">done_all</span>
+Completed
+</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-start gap-4 p-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900/50 hover:border-primary dark:hover:border-primary transition-colors cursor-pointer">
+<div class="flex items-center justify-center mt-1">
+<input type="checkbox" class="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-gray-900 dark:text-white text-base font-medium leading-normal">Finalize Q3 budget allocation</h3>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300">High Priority</span>
+</div>
+<p class="text-gray-500 dark:text-gray-400 text-sm mb-2">Review and approve the budget proposal for Q3 initiatives</p>
+<div class="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">folder</span>
+Project Alpha
+</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+Due tomorrow
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900/50 hover:border-primary dark:hover:border-primary transition-colors cursor-pointer">
+<div class="flex items-center justify-center mt-1">
+<input type="checkbox" class="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-gray-900 dark:text-white text-base font-medium leading-normal">Update API documentation</h3>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">Medium Priority</span>
+</div>
+<p class="text-gray-500 dark:text-gray-400 text-sm mb-2">Add examples and update authentication section</p>
+<div class="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">folder</span>
+Engineering
+</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+Due in 3 days
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900/50 hover:border-primary dark:hover:border-primary transition-colors cursor-pointer">
+<div class="flex items-center justify-center mt-1">
+<input type="checkbox" class="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-gray-900 dark:text-white text-base font-medium leading-normal">Review marketing campaign assets</h3>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300">Low Priority</span>
+</div>
+<p class="text-gray-500 dark:text-gray-400 text-sm mb-2">Provide feedback on social media graphics and copy</p>
+<div class="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">folder</span>
+Marketing
+</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+Due next week
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900/50 hover:border-gray-300 dark:hover:border-gray-700 transition-colors opacity-60">
+<div class="flex items-center justify-center mt-1">
+<input type="checkbox" checked class="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-gray-500 dark:text-gray-400 text-base font-medium leading-normal line-through">Set up team standup meetings</h3>
+</div>
+<p class="text-gray-500 dark:text-gray-400 text-sm mb-2">Scheduled recurring meetings with all team leads</p>
+<div class="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">folder</span>
+Project Alpha
+</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+Completed yesterday
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900/50 hover:border-gray-300 dark:hover:border-gray-700 transition-colors opacity-60">
+<div class="flex items-center justify-center mt-1">
+<input type="checkbox" checked class="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<h3 class="text-gray-500 dark:text-gray-400 text-base font-medium leading-normal line-through">Review onboarding documentation</h3>
+</div>
+<p class="text-gray-500 dark:text-gray-400 text-sm mb-2">Updated the new hire onboarding guide with latest process changes</p>
+<div class="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">folder</span>
+Engineering
+</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+Completed 2 days ago
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

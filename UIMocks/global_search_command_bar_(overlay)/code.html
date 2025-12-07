@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a212f",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                        "text-primary-light": "#111827",
+                        "text-primary-dark": "#ffffff",
+                        "text-secondary-light": "#6b7280",
+                        "text-secondary-dark": "#9ca3af",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-primary-dark">
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ESC key handler
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            window.location.href = '../editor_page_with_rich_content/code.html';
+        }
+    });
+    
+    // Click outside overlay handler
+    document.querySelector('.backdrop').addEventListener('click', function() {
+        window.location.href = '../editor_page_with_rich_content/code.html';
+    });
+});
+</script>
+<div class="relative flex h-screen w-full flex-col items-start justify-start">
+<div class="absolute inset-0 z-0 flex h-full w-full">
+<aside class="flex h-full w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111722] p-4 shrink-0">
+<div class="flex h-full flex-col justify-between">
+<div class="flex flex-col gap-4">
+<a href="../home/code.html" class="flex gap-3 items-center hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg p-2 transition-colors">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Workspace logo" style='background-image: url("../WrightNowLogo.png");'></div>
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-base font-medium leading-normal">WRight Now</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Workspace</p>
+</div>
+</a>
+<div class="flex flex-col gap-1 mt-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-gray-500 dark:text-white text-xl">inbox</span>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Inbox</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="../my_tasks_view/code.html">
+<span class="material-symbols-outlined text-gray-500 dark:text-white text-xl">check_circle</span>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">My Tasks</p>
+</a>
+</div>
+<div class="flex flex-col gap-1 pl-3 border-l border-gray-200 dark:border-gray-700 mt-3">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Spaces</span>
+</a>
+<div class="flex flex-col gap-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-2">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md bg-gray-100 dark:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-900 dark:text-white">folder</span>
+<span class="text-sm font-medium text-gray-900 dark:text-white">Project Alpha</span>
+</a>
+<div class="flex flex-col gap-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-2">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md bg-gray-100 dark:bg-gray-800/50" href="../editor_page_with_rich_content/code.html">
+<span class="material-symbols-outlined text-base text-gray-900 dark:text-white">draft</span>
+<span class="text-sm font-medium text-gray-900 dark:text-white">Q3 Planning Session</span>
+</a>
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base">draft</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Meeting Notes</span>
+</a>
+</div>
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Engineering</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 border-t border-gray-200 dark:border-gray-800 pt-4">
+<a href="../admin_panel_-_users_view/code.html" class="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9q5PCGhoC_jYNP5WJkpM3x-evLQLnLht1gQWvndmLFjGs5bhNq-pG5OwMLNB5xWZVGkYkEVQ7RslFPB7M6k1wIgk0BU9dbI4Mi6fA62t_jD91LArb42cMB5WMHjBYOxOc-RcUQHC-IGVWA-Q7Px5pxMQRrV41vzcSCF3TxKjq5i1UCQTBoHpJH6SUXdQwOtzdKyTCOhoRP9fLX-vn5pDn00rTvGysedmt-bf4qLtKRelCNPl13Ifgh7CvQBgk_RfbxlcqQbW8MXI");'></div>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Alex Hartman</p>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto p-8">
+<div class="w-full max-w-3xl mx-auto mb-8">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-2xl">search</span>
+<input onclick="window.location.href='../global_search_command_bar_(overlay)/code.html'" class="w-full h-14 pl-12 pr-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111722] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent text-base cursor-pointer" placeholder="Search, Ask or Do anything..." type="text" readonly/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-md px-2 py-1">Cmd+K</div>
+</div>
+</div>
+<div class="mx-auto max-w-3xl">
+<h1 class="text-4xl font-bold">Q3 Planning Session</h1>
+<div class="mt-8 space-y-4 text-text-secondary-dark">
+<p>The Q3 Planning Session focused on three key initiatives: finalizing the Project Alpha roadmap, allocating budget for new engineering hires, and outlining the cross-functional team structure. The primary goal is to ship the Project Alpha MVP by the end of the quarter.</p>
+<h2 class="pt-4 text-2xl font-semibold text-text-primary-dark">Key Initiatives</h2>
+<ul class="list-disc space-y-2 pl-6">
+<li>Finalize Project Alpha roadmap</li>
+<li>Allocate budget for new engineering hires</li>
+<li>Outline cross-functional team structure</li>
+</ul>
+</div>
+</div>
+</main>
+</div>
+<div class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm backdrop cursor-pointer"></div>
+<div class="relative z-50 mx-auto mt-[15vh] flex w-full max-w-2xl flex-col overflow-hidden rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark shadow-2xl">
+<div class="flex items-center gap-2 border-b border-border-light dark:border-border-dark p-3">
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark pl-2">search</span>
+<input class="w-full flex-1 appearance-none border-none bg-transparent p-2 text-lg text-text-primary-light dark:text-text-primary-dark placeholder-text-secondary-light dark:placeholder-text-secondary-dark focus:outline-none focus:ring-0" placeholder="Search, Ask or Do anything..." type="text" value="Q3 Planning Session summary"/>
+</div>
+<div class="max-h-[60vh] overflow-y-auto">
+<div class="p-4">
+<div class="flex items-center gap-3 px-2 pb-2">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<h3 class="text-text-primary-light dark:text-text-primary-dark text-base font-semibold leading-tight tracking-[-0.015em]">AI Answer</h3>
+</div>
+<div class="rounded-lg bg-primary/10 dark:bg-primary/20 p-4">
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-normal leading-relaxed">
+                            The Q3 Planning Session focused on three key initiatives: finalizing the Project Alpha roadmap, allocating budget for new engineering hires, and outlining the cross-functional team structure. The primary goal is to ship the Project Alpha MVP by the end of the quarter.
+                        </p>
+<div class="flex gap-2 flex-wrap pt-4">
+<div class="flex cursor-pointer h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 dark:bg-primary/30 px-3 hover:bg-primary/30 dark:hover:bg-primary/40">
+<p class="text-blue-700 dark:text-blue-100 text-sm font-medium">Q3 Planning Session Doc</p>
+</div>
+<div class="flex cursor-pointer h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 dark:bg-primary/30 px-3 hover:bg-primary/30 dark:hover:bg-primary/40">
+<p class="text-blue-700 dark:text-blue-100 text-sm font-medium">Project Alpha Roadmap</p>
+</div>
+<div class="flex cursor-pointer h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 dark:bg-primary/30 px-3 hover:bg-primary/30 dark:hover:bg-primary/40">
+<p class="text-blue-700 dark:text-blue-100 text-sm font-medium">Meeting Notes</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 pt-0">
+<h3 class="text-text-primary-light dark:text-text-primary-dark text-base font-semibold leading-tight tracking-[-0.015em] px-2 pb-2">Documents</h3>
+<ul class="flex flex-col gap-1">
+<li class="group flex cursor-pointer items-start gap-3 rounded-lg p-2 bg-primary/10 dark:bg-primary/20">
+<div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-700">
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark text-lg">description</span>
+</div>
+<div class="flex-grow">
+<p class="font-medium text-text-primary-light dark:text-text-primary-dark">Q3 Planning Session</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">In Project Alpha</p>
+<p class="mt-1 text-sm text-text-secondary-light dark:text-text-secondary-dark">...the main agenda for the <mark class="bg-primary/20 dark:bg-primary/30 text-text-primary-light dark:text-text-primary-dark rounded-sm px-0.5 py-0">Q3 Planning Session</mark> was to align on key deliverables for Project Alpha...</p>
+</div>
+</li>
+<li class="group flex cursor-pointer items-start gap-3 rounded-lg p-2 hover:bg-primary/10 dark:hover:bg-primary/20">
+<div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-700">
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark text-lg">description</span>
+</div>
+<div class="flex-grow">
+<p class="font-medium text-text-primary-light dark:text-text-primary-dark">Meeting Notes - 15/07</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">In Meeting Notes</p>
+<p class="mt-1 text-sm text-text-secondary-light dark:text-text-secondary-dark">...recap of the action items from the <mark class="bg-primary/20 dark:bg-primary/30 text-text-primary-light dark:text-text-primary-dark rounded-sm px-0.5 py-0">planning session</mark>. All engineering tasks are now tracked in Jira...</p>
+</div>
+</li>
+<li class="group flex cursor-pointer items-start gap-3 rounded-lg p-2 hover:bg-primary/10 dark:hover:bg-primary/20">
+<div class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md bg-zinc-200 dark:bg-zinc-700">
+<span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark text-lg">description</span>
+</div>
+<div class="flex-grow">
+<p class="font-medium text-text-primary-light dark:text-text-primary-dark">Project Alpha - Technical Spec</p>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">In Engineering</p>
+<p class="mt-1 text-sm text-text-secondary-light dark:text-text-secondary-dark">...as decided in the <mark class="bg-primary/20 dark:bg-primary/30 text-text-primary-light dark:text-text-primary-dark rounded-sm px-0.5 py-0">Q3 planning</mark>, the backend will be built using Go. The initial infrastructure setup...</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body></html>
