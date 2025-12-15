@@ -107,12 +107,29 @@ For production-like local development with Kubernetes:
    ./scripts/k8s-setup.sh
    ```
 
-3. **Deploy services**
+3. **Deploy services (Manual)**
    ```bash
    ./scripts/k8s-deploy.sh
    ```
+   
+   **Or use ArgoCD (GitOps - Recommended)**
+   ```bash
+   # Install and configure ArgoCD
+   ./scripts/argocd-setup.sh
+   
+   # Access ArgoCD UI
+   # http://localhost/argocd
+   ```
+   
+   ArgoCD provides:
+   - 🔄 **Automated deployments** from Git
+   - 🔐 **Self-healing** to prevent drift
+   - 📊 **Visual dashboard** for deployment status
+   - ⏮️ **Easy rollback** via Git revert
+   - 📝 **Audit trail** of all changes
 
 4. **Access services**
+   - ArgoCD UI: `http://localhost/argocd` (GitOps dashboard)
    - Authentik IdP: `http://localhost/auth/`
    - PostgreSQL: Via `kubectl exec`
    - Redis: Via `kubectl exec`
@@ -122,13 +139,17 @@ For production-like local development with Kubernetes:
    ./scripts/k8s-teardown.sh
    ```
 
-For detailed Kubernetes setup instructions, see [Kubernetes Setup Guide](docs/kubernetes-setup.md).
+For detailed instructions, see:
+- [Kubernetes Setup Guide](docs/kubernetes-setup.md)
+- [ArgoCD GitOps Guide](docs/argocd-guide.md)
 
 ## 📖 Documentation
 
 - **[Sprint Plan](ProjectDocs/SprintPlan.md)** - 6-month MVP development roadmap
 - **[Technical Design](ProjectDocs/TechnicalDesignDoc.md)** - Architecture and system design
 - **[Requirements](ProjectDocs/ProjectRequirementsDoc.md)** - Detailed product requirements
+- **[Kubernetes Setup](docs/kubernetes-setup.md)** - Kubernetes cluster configuration
+- **[ArgoCD GitOps Guide](docs/argocd-guide.md)** - GitOps continuous deployment
 - **[Contributing](CONTRIBUTING.md)** - How to contribute to WRight Now
 
 ## 🤝 Contributing

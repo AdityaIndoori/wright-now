@@ -1,0 +1,75 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  update-manifests:
+    name: Update Kubernetes Manifests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      
+      - name: Set up Kustomize
+        run: |
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          sudo mv kustomize /usr/local/bin/
+      
+      - name: Update image tags
+        run: |
+          cd k8s/overlays/staging
+          
+          # Uncomment when services are built and pushed to registry
+          # kustomize edit set image \
+          #   core-backend=ghcr.io/${{ github.repository }}/core-backend:${{ github.sha }} \
+          #   ai-service=ghcr.io/${{ github.repository }}/ai-service:${{ github.sha }} \
+          #   web-client=ghcr.io/${{ github.repository }}/web-client:${{ github.sha }}
+          
+          echo "Image tags would be updated to commit SHA: ${{ github.sha }}"
+          echo "This will be enabled once CI builds and pushes Docker images"
+      
+      - name: Commit and push manifest changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check if there are changes to commit
+          if git diff --quiet; then
+            echo "No manifest changes to commit"
+          else
+            git add k8s/overlays/staging/kustomization.yaml
+            git commit -m "chore(deploy): update image tags to ${{ github.sha }}"
+            git push
+            echo "Manifest changes pushed. ArgoCD will sync automatically."
+          fi
+      
+      - name: Notify deployment
+        run: |
+          echo "✅ Deployment manifests updated"
+          echo "📦 Commit SHA: ${{ github.sha }}"
+          echo "🚀 ArgoCD will sync changes within 3 minutes"
+          echo "🔗 ArgoCD UI: http://localhost/argocd (local) or your staging URL"
+
+  # Future job: Wait for ArgoCD sync to complete
+  # verify-deployment:
+  #   name: Verify Deployment
+  #   runs-on: ubuntu-latest
+  #   needs: update-manifests
+  #   steps:
+  #     - name: Wait for ArgoCD sync
+  #       run: |
+  #         # Use ArgoCD CLI to wait for sync
+  #         argocd app wait infrastructure --sync
+  #     
+  #     - name: Run smoke tests
+  #       run: |
+  #         # Run basic health checks
+  #         curl -f http://staging.example.com/health
