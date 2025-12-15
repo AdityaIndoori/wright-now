@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Share Document - WRight Now</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#0f4ed8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a212f",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                        "text-primary-light": "#111827",
+                        "text-primary-dark": "#ffffff",
+                        "text-secondary-light": "#6b7280",
+                        "text-secondary-dark": "#9ca3af",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        select {
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            background-image: none !important;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"></div>
+    
+    <!-- Modal -->
+    <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="w-full max-w-lg bg-surface-light dark:bg-surface-dark rounded-2xl shadow-2xl border border-border-light dark:border-border-dark overflow-hidden">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-6 border-b border-border-light dark:border-border-dark">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-2xl">share</span>
+                    <div>
+                        <h2 class="text-lg font-semibold">Share "Q3 Planning Session"</h2>
+                        <p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Manage who can access this document</p>
+                    </div>
+                </div>
+                <button class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                    <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">close</span>
+                </button>
+            </div>
+            
+            <!-- Content -->
+            <div class="p-6 space-y-6">
+                <!-- Invite Input -->
+                <div>
+                    <label class="block text-sm font-medium mb-2">Invite people</label>
+                    <div class="flex gap-2">
+                        <div class="relative flex-1">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark text-xl">person_add</span>
+                            <input type="email" placeholder="Enter email addresses" class="w-full h-11 pl-10 pr-4 rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark placeholder:text-text-secondary-light focus:ring-2 focus:ring-primary focus:border-transparent text-sm"/>
+                        </div>
+                        <select class="h-11 px-3 rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark text-sm">
+                            <option value="edit">Can edit</option>
+                            <option value="comment">Can comment</option>
+                            <option value="view">Can view</option>
+                        </select>
+                        <button class="h-11 px-4 bg-primary text-white rounded-lg font-medium text-sm hover:bg-primary-hover transition-colors">
+                            Invite
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Current Access -->
+                <div>
+                    <h3 class="text-sm font-medium mb-3">People with access</h3>
+                    <div class="space-y-3">
+                        <!-- Owner -->
+                        <div class="flex items-center justify-between p-3 bg-background-light dark:bg-background-dark rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9q5PCGhoC_jYNP5WJkpM3x-evLQLnLht1gQWvndmLFjGs5bhNq-pG5OwMLNB5xWZVGkYkEVQ7RslFPB7M6k1wIgk0BU9dbI4Mi6fA62t_jD91LArb42cMB5WMHjBYOxOc-RcUQHC-IGVWA-Q7Px5pxMQRrV41vzcSCF3TxKjq5i1UCQTBoHpJH6SUXdQwOtzdKyTCOhoRP9fLX-vn5pDn00rTvGysedmt-bf4qLtKRelCNPl13Ifgh7CvQBgk_RfbxlcqQbW8MXI");'></div>
+                                <div>
+                                    <p class="font-medium text-sm">Alex Hartman (you)</p>
+                                    <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">alex@company.com</p>
+                                </div>
+                            </div>
+                            <span class="text-sm text-text-secondary-light dark:text-text-secondary-dark font-medium">Owner</span>
+                        </div>
+                        
+                        <!-- Editor -->
+                        <div class="flex items-center justify-between p-3 bg-background-light dark:bg-background-dark rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                                    <span class="text-primary font-semibold text-sm">JD</span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-sm">Jane Doe</p>
+                                    <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">jane@company.com</p>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <select class="h-9 pl-3 pr-8 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-text-primary-light dark:text-text-primary-dark text-sm cursor-pointer">
+                                    <option value="edit" selected>Can edit</option>
+                                    <option value="comment">Can comment</option>
+                                    <option value="view">Can view</option>
+                                    <option value="remove" class="text-red-500">Remove</option>
+                                </select>
+                                <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark text-lg pointer-events-none">expand_more</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Viewer -->
+                        <div class="flex items-center justify-between p-3 bg-background-light dark:bg-background-dark rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                                    <span class="text-green-600 dark:text-green-400 font-semibold text-sm">JS</span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-sm">John Smith</p>
+                                    <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">john@company.com</p>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <select class="h-9 pl-3 pr-8 rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-text-primary-light dark:text-text-primary-dark text-sm cursor-pointer">
+                                    <option value="edit">Can edit</option>
+                                    <option value="comment" selected>Can comment</option>
+                                    <option value="view">Can view</option>
+                                    <option value="remove" class="text-red-500">Remove</option>
+                                </select>
+                                <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark text-lg pointer-events-none">expand_more</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Link Sharing -->
+                <div class="border-t border-border-light dark:border-border-dark pt-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">link</span>
+                            <div>
+                                <p class="font-medium text-sm">Share via link</p>
+                                <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Anyone with the link can view</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" checked>
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+                        </label>
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="text" value="https://wrightnow.app/doc/q3-planning-xyz123" readonly class="flex-1 h-10 px-3 rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-secondary-light dark:text-text-secondary-dark text-sm"/>
+                        <button class="h-10 px-4 bg-gray-100 dark:bg-gray-800 text-text-primary-light dark:text-text-primary-dark rounded-lg font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center gap-2">
+                            <span class="material-symbols-outlined text-lg">content_copy</span>
+                            Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="flex items-center justify-between p-6 border-t border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark">
+                <button class="text-sm text-text-secondary-light dark:text-text-secondary-dark hover:text-text-primary-light dark:hover:text-text-primary-dark transition-colors">
+                    Learn about sharing
+                </button>
+                <button class="h-10 px-6 bg-primary text-white rounded-lg font-medium text-sm hover:bg-primary-hover transition-colors">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Loading States - WRight Now</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a212f",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.1) 50%, 
+                rgba(255,255,255,0) 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        .skeleton-light {
+            background: linear-gradient(90deg, 
+                #e5e7eb 0%, 
+                #f3f4f6 50%, 
+                #e5e7eb 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        .dark .skeleton-base {
+            background-color: #374151;
+        }
+        .skeleton-base {
+            background-color: #e5e7eb;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-white p-8">
+    <div class="max-w-4xl mx-auto space-y-12">
+        <div>
+            <h1 class="text-3xl font-bold mb-2">Loading & Skeleton States</h1>
+            <p class="text-gray-500 dark:text-gray-400 mb-8">Reference page showing all loading state designs for the UI</p>
+        </div>
+        
+        <!-- Document List Skeleton -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">Document List Loading</h2>
+            <div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark p-4 space-y-3">
+                <div class="flex items-center gap-4 p-3 rounded-lg">
+                    <div class="w-10 h-10 rounded-lg skeleton-base skeleton"></div>
+                    <div class="flex-1 space-y-2">
+                        <div class="h-4 w-48 rounded skeleton-base skeleton"></div>
+                        <div class="h-3 w-32 rounded skeleton-base skeleton"></div>
+                    </div>
+                    <div class="h-3 w-20 rounded skeleton-base skeleton"></div>
+                </div>
+                <div class="flex items-center gap-4 p-3 rounded-lg">
+                    <div class="w-10 h-10 rounded-lg skeleton-base skeleton"></div>
+                    <div class="flex-1 space-y-2">
+                        <div class="h-4 w-64 rounded skeleton-base skeleton"></div>
+                        <div class="h-3 w-24 rounded skeleton-base skeleton"></div>
+                    </div>
+                    <div class="h-3 w-16 rounded skeleton-base skeleton"></div>
+                </div>
+                <div class="flex items-center gap-4 p-3 rounded-lg">
+                    <div class="w-10 h-10 rounded-lg skeleton-base skeleton"></div>
+                    <div class="flex-1 space-y-2">
+                        <div class="h-4 w-40 rounded skeleton-base skeleton"></div>
+                        <div class="h-3 w-28 rounded skeleton-base skeleton"></div>
+                    </div>
+                    <div class="h-3 w-24 rounded skeleton-base skeleton"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Document Editor Skeleton -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">Document Editor Loading</h2>
+            <div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark p-8 space-y-6">
+                <div class="h-10 w-96 rounded skeleton-base skeleton"></div>
+                <div class="space-y-3">
+                    <div class="h-4 w-full rounded skeleton-base skeleton"></div>
+                    <div class="h-4 w-full rounded skeleton-base skeleton"></div>
+                    <div class="h-4 w-3/4 rounded skeleton-base skeleton"></div>
+                </div>
+                <div class="h-48 w-full rounded-lg skeleton-base skeleton"></div>
+                <div class="space-y-3">
+                    <div class="h-4 w-full rounded skeleton-base skeleton"></div>
+                    <div class="h-4 w-5/6 rounded skeleton-base skeleton"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- User List Skeleton -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">User List Loading</h2>
+            <div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark overflow-hidden">
+                <div class="grid grid-cols-6 gap-4 p-4 border-b border-border-light dark:border-border-dark">
+                    <div class="h-4 w-16 rounded skeleton-base skeleton"></div>
+                    <div class="h-4 w-20 rounded skeleton-base skeleton"></div>
+                    <div class="h-4 w-12 rounded skeleton-base skeleton"></div>
+                    <div class="h-4 w-14 rounded skeleton-base skeleton"></div>
+                    <div class="h-4 w-20 rounded skeleton-base skeleton"></div>
+                    <div class="h-4 w-16 rounded skeleton-base skeleton"></div>
+                </div>
+                <div class="p-4 space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full skeleton-base skeleton"></div>
+                        <div class="flex-1 grid grid-cols-5 gap-4">
+                            <div class="h-4 rounded skeleton-base skeleton"></div>
+                            <div class="h-4 rounded skeleton-base skeleton"></div>
+                            <div class="h-4 rounded skeleton-base skeleton"></div>
+                            <div class="h-4 rounded skeleton-base skeleton"></div>
+                            <div class="h-4 rounded skeleton-base skeleton"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full skeleton-base skeleton"></div>
+                        <div class="flex-1 grid grid-cols-5 gap-4">
+                            <div class="h-4 rounded skeleton-base skeleton"></div>
+                            <div class="h-4 rounded skeleton-base skeleton"></div>
+                            <div class="h-4 rounded skeleton-base skeleton"></div>
+                            <div class="h-4 rounded skeleton-base skeleton"></div>
+                            <div class="h-4 rounded skeleton-base skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Notification List Skeleton -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">Notification List Loading</h2>
+            <div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark p-4 space-y-4">
+                <div class="flex items-start gap-4 p-3">
+                    <div class="w-10 h-10 rounded-full skeleton-base skeleton"></div>
+                    <div class="flex-1 space-y-2">
+                        <div class="h-4 w-3/4 rounded skeleton-base skeleton"></div>
+                        <div class="h-3 w-1/2 rounded skeleton-base skeleton"></div>
+                    </div>
+                    <div class="h-3 w-12 rounded skeleton-base skeleton"></div>
+                </div>
+                <div class="flex items-start gap-4 p-3">
+                    <div class="w-10 h-10 rounded-full skeleton-base skeleton"></div>
+                    <div class="flex-1 space-y-2">
+                        <div class="h-4 w-2/3 rounded skeleton-base skeleton"></div>
+                        <div class="h-3 w-2/5 rounded skeleton-base skeleton"></div>
+                    </div>
+                    <div class="h-3 w-16 rounded skeleton-base skeleton"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Spinner Examples -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">Loading Spinners</h2>
+            <div class="grid grid-cols-4 gap-6">
+                <div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark p-8 flex flex-col items-center gap-4">
+                    <div class="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Default</p>
+                </div>
+                <div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark p-8 flex flex-col items-center gap-4">
+                    <div class="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Small</p>
+                </div>
+                <div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark p-8 flex flex-col items-center gap-4">
+                    <div class="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Large</p>
+                </div>
+                <div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark p-8 flex flex-col items-center gap-4">
+                    <div class="flex gap-1">
+                        <div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0ms"></div>
+                        <div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 150ms"></div>
+                        <div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Dots</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Full Page Loading -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">Full Page Loading</h2>
+            <div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-border-light dark:border-border-dark p-16 flex flex-col items-center justify-center gap-4">
+                <img src="../WrightNowLogo.png" alt="Logo" class="w-12 h-12 rounded-lg opacity-80"/>
+                <div class="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin"></div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Loading your workspace...</p>
+            </div>
+        </section>
+        
+        <!-- Button Loading States -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">Button Loading States</h2>
+            <div class="flex gap-4 flex-wrap">
+                <button class="h-10 px-6 bg-primary text-white rounded-lg font-medium text-sm flex items-center gap-2">
+                    <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Saving...
+                </button>
+                <button class="h-10 px-6 bg-gray-200 dark:bg-gray-700 text-gray-400 rounded-lg font-medium text-sm cursor-not-allowed" disabled>
+                    Loading...
+                </button>
+                <button class="h-10 px-6 border border-primary text-primary rounded-lg font-medium text-sm flex items-center gap-2">
+                    <div class="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                    Processing
+                </button>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
