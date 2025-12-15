@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Page Not Found - WRight Now</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#0f4ed8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a212f",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                        "text-primary-light": "#111827",
+                        "text-primary-dark": "#ffffff",
+                        "text-secondary-light": "#6b7280",
+                        "text-secondary-dark": "#9ca3af",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark">
+    <div class="min-h-screen flex flex-col items-center justify-center p-4">
+        <!-- Logo -->
+        <a href="../home/code.html" class="mb-8">
+            <img src="../WrightNowLogo.png" alt="WRight Now Logo" class="w-16 h-16 rounded-xl"/>
+        </a>
+        
+        <!-- Error Content -->
+        <div class="text-center max-w-md">
+            <!-- 404 Icon -->
+            <div class="flex items-center justify-center w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10">
+                <span class="material-symbols-outlined text-5xl text-primary">search_off</span>
+            </div>
+            
+            <h1 class="text-6xl font-bold text-primary mb-4">404</h1>
+            <h2 class="text-2xl font-semibold mb-3">Page not found</h2>
+            <p class="text-text-secondary-light dark:text-text-secondary-dark mb-8">
+                The page you're looking for doesn't exist or has been moved. 
+                Check the URL or try searching for what you need.
+            </p>
+            
+            <!-- Search Box -->
+            <div class="relative mb-6">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark">search</span>
+                <input type="text" placeholder="Search for documents..." class="w-full h-12 pl-12 pr-4 rounded-xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-text-primary-light dark:text-text-primary-dark placeholder:text-text-secondary-light focus:ring-2 focus:ring-primary focus:border-transparent"/>
+            </div>
+            
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="../home/code.html" class="inline-flex items-center justify-center h-11 px-6 bg-primary text-white rounded-lg font-medium hover:bg-primary-hover transition-colors">
+                    <span class="material-symbols-outlined mr-2">home</span>
+                    Go to Home
+                </a>
+                <button onclick="history.back()" class="inline-flex items-center justify-center h-11 px-6 border border-border-light dark:border-border-dark rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    <span class="material-symbols-outlined mr-2">arrow_back</span>
+                    Go Back
+                </button>
+            </div>
+        </div>
+        
+        <!-- Help Links -->
+        <div class="mt-12 text-center">
+            <p class="text-sm text-text-secondary-light dark:text-text-secondary-dark mb-4">Need help?</p>
+            <div class="flex gap-6 justify-center text-sm">
+                <a href="#" class="text-primary hover:underline flex items-center gap-1">
+                    <span class="material-symbols-outlined text-lg">help</span>
+                    Help Center
+                </a>
+                <a href="#" class="text-primary hover:underline flex items-center gap-1">
+                    <span class="material-symbols-outlined text-lg">support_agent</span>
+                    Contact Support
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

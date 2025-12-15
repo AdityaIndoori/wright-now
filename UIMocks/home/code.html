@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+<div class="flex h-screen w-full">
+<aside class="flex h-full w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111722] p-4 shrink-0">
+<div class="flex h-full flex-col justify-between">
+<div class="flex flex-col gap-4">
+<a href="../home/code.html" class="flex gap-3 items-center bg-primary/10 dark:bg-[#232f48] rounded-lg p-2 hover:bg-primary/20 dark:hover:bg-[#2a3a58] transition-colors">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Workspace logo" style='background-image: url("../WrightNowLogo.png");'></div>
+<div class="flex flex-col">
+<h1 class="text-primary dark:text-white text-base font-medium leading-normal">WRight Now</h1>
+<p class="text-primary dark:text-gray-400 text-sm font-normal leading-normal">Workspace</p>
+</div>
+</a>
+<div class="flex flex-col gap-1 mt-2">
+<a class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="../inbox_&_notifications_view/code.html">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-500 dark:text-white text-xl">inbox</span>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Inbox</p>
+</div>
+<span class="flex items-center justify-center rounded-full bg-red-500 text-white text-xs font-semibold size-5">3</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="../my_tasks_view/code.html">
+<span class="material-symbols-outlined text-gray-500 dark:text-white text-xl">check_circle</span>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">My Tasks</p>
+</a>
+</div>
+<div class="flex flex-col gap-1 pl-3 border-l border-gray-200 dark:border-gray-700 mt-3">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Spaces</span>
+</a>
+<div class="flex flex-col gap-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-2">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-700 dark:text-gray-300">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Project Alpha</span>
+</a>
+<div class="flex flex-col gap-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-2">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="../editor_page_with_rich_content/code.html">
+<span class="material-symbols-outlined text-base">draft</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Q3 Planning Session</span>
+</a>
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base">draft</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Meeting Notes</span>
+</a>
+</div>
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Engineering</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 border-t border-gray-200 dark:border-gray-800 pt-4">
+<a href="../admin_panel_-_users_view/code.html" class="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="Alex Hartman's avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9q5PCGhoC_jYNP5WJkpM3x-evLQLnLht1gQWvndmLFjGs5bhNq-pG5OwMLNB5xWZVGkYkEVQ7RslFPB7M6k1wIgk0BU9dbI4Mi6fA62t_jD91LArb42cMB5WMHjBYOxOc-RcUQHC-IGVWA-Q7Px5pxMQRrV41vzcSCF3TxKjq5i1UCQTBoHpJH6SUXdQwOtzdKyTCOhoRP9fLX-vn5pDn00rTvGysedmt-bf4qLtKRelCNPl13Ifgh7CvQBgk_RfbxlcqQbW8MXI");'></div>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Alex Hartman</p>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-y-auto p-8">
+<div class="w-full max-w-4xl mx-auto flex-shrink-0">
+<div class="relative mb-8">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-2xl">search</span>
+<input onclick="window.location.href='../global_search_command_bar_(overlay)/code.html'" class="w-full h-14 pl-12 pr-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111722] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent text-base cursor-pointer" placeholder="Search, Ask or Do anything..." type="text" readonly/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-md px-2 py-1">Cmd+K</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 -mr-2">
+<div class="max-w-4xl mx-auto">
+<h1 class="text-gray-900 dark:text-white tracking-tight text-[32px] font-bold leading-tight text-left pb-8">Good morning, Alex</h1>
+<div class="mb-10">
+<h2 class="text-gray-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-4">My Feed</h2>
+<div class="flex flex-col">
+<div class="flex items-center gap-4 hover:bg-gray-100/50 dark:hover:bg-gray-800/20 px-4 py-3 justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<div class="text-gray-500 dark:text-gray-400 flex items-center justify-center shrink-0 size-8">
+<span class="material-symbols-outlined text-xl">chat_bubble</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal line-clamp-1">Jane commented on 'Q4 Strategy'</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal line-clamp-2">2 hours ago</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 hover:bg-gray-100/50 dark:hover:bg-gray-800/20 px-4 py-3 justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<div class="text-gray-500 dark:text-gray-400 flex items-center justify-center shrink-0 size-8">
+<span class="material-symbols-outlined text-xl">alternate_email</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal line-clamp-1">You were mentioned in 'Project Phoenix'</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal line-clamp-2">Yesterday</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 hover:bg-gray-100/50 dark:hover:bg-gray-800/20 px-4 py-3 justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<div class="text-gray-500 dark:text-gray-400 flex items-center justify-center shrink-0 size-8">
+<span class="material-symbols-outlined text-xl">person_add</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal line-clamp-1">Mike shared 'Competitor Analysis' with you</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal line-clamp-2">3 days ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-10">
+<h2 class="text-gray-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-4">Quick Access</h2>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary text-2xl">draft</span>
+<div>
+<p class="text-gray-900 dark:text-white font-medium leading-normal line-clamp-1 text-sm">2024 Product Roadmap</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs mt-0.5">Modified 2 days ago</p>
+</div>
+</a>
+<a class="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary text-2xl">draft</span>
+<div>
+<p class="text-gray-900 dark:text-white font-medium leading-normal line-clamp-1 text-sm">Onboarding Guide for New Hires</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs mt-0.5">Modified 1 week ago</p>
+</div>
+</a>
+<a class="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary text-2xl">folder</span>
+<div>
+<p class="text-gray-900 dark:text-white font-medium leading-normal line-clamp-1 text-sm">Marketing Assets</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs mt-0.5">Modified 4 hours ago</p>
+</div>
+</a>
+</div>
+</div>
+<div>
+<h2 class="text-gray-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-4">Suggested For You</h2>
+<div class="flex flex-col">
+<div class="flex items-center gap-4 hover:bg-gray-100/50 dark:hover:bg-gray-800/20 px-4 py-3 justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<div class="text-gray-500 dark:text-gray-400 flex items-center justify-center shrink-0 size-8">
+<span class="material-symbols-outlined text-xl">trending_up</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal line-clamp-1">AI Integration Research</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal line-clamp-1">Trending in Engineering</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 hover:bg-gray-100/50 dark:hover:bg-gray-800/20 px-4 py-3 justify-between rounded-lg">
+<div class="flex items-center gap-4">
+<div class="text-gray-500 dark:text-gray-400 flex items-center justify-center shrink-0 size-8">
+<span class="material-symbols-outlined text-xl">groups</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal line-clamp-1">Q3 Sales Performance Review</p>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-normal leading-normal line-clamp-1">Popular in your team</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main>
+<aside class="flex h-full w-72 flex-col border-l border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111722] p-6 shrink-0">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-gray-900 dark:text-white text-base font-semibold">Quick Actions</h2>
+</div>
+<div class="flex flex-col gap-1">
+<button class="flex items-center w-full gap-3 px-3 py-2.5 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/50 text-left">
+<span class="material-symbols-outlined text-base">add_circle</span>
+                    New Document
+                </button>
+<button class="flex items-center w-full gap-3 px-3 py-2.5 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/50 text-left">
+<span class="material-symbols-outlined text-base">create_new_folder</span>
+                    New Folder
+                </button>
+<button class="flex items-center w-full gap-3 px-3 py-2.5 rounded-lg text-gray-800 dark:text-gray-200 font-medium text-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-800/50 text-left">
+<span class="material-symbols-outlined text-base">person_add</span>
+                    Invite Teammate
+                </button>
+</div>
+</aside>
+</div>
+</body></html>

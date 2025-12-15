@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2232",
+                        "text-primary-light": "#172B4D",
+                        "text-primary-dark": "#e1e6f0",
+                        "text-secondary-light": "#5E6C84",
+                        "text-secondary-dark": "#92a4c9",
+                        "border-light": "#DFE1E6",
+                        "border-dark": "#232f48",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark">
+<div class="flex h-screen w-full">
+<aside class="flex h-full w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111722] p-4 shrink-0">
+<div class="flex h-full flex-col justify-between">
+<div class="flex flex-col gap-4">
+<a href="../home/code.html" class="flex gap-3 items-center hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg p-2 transition-colors">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Workspace logo" style='background-image: url("../WrightNowLogo.png");'></div>
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-base font-medium leading-normal">WRight Now</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Workspace</p>
+</div>
+</a>
+<div class="flex flex-col gap-1 mt-2">
+<a class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="../inbox_&_notifications_view/code.html">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-gray-500 dark:text-white text-xl">inbox</span>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Inbox</p>
+</div>
+<span class="flex items-center justify-center rounded-full bg-red-500 text-white text-xs font-semibold size-5">3</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="../my_tasks_view/code.html">
+<span class="material-symbols-outlined text-gray-500 dark:text-white text-xl">check_circle</span>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">My Tasks</p>
+</a>
+</div>
+<div class="flex flex-col gap-1 pl-3 border-l border-gray-200 dark:border-gray-700 mt-3">
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Spaces</span>
+</a>
+<div class="flex flex-col gap-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-2">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md bg-gray-100 dark:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base text-gray-900 dark:text-white">folder</span>
+<span class="text-sm font-medium text-gray-900 dark:text-white">Project Alpha</span>
+</a>
+<div class="flex flex-col gap-1 pl-4 border-l border-gray-200 dark:border-gray-700 ml-2">
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md bg-gray-100 dark:bg-gray-800/50" href="../editor_page_with_rich_content/code.html">
+<span class="material-symbols-outlined text-base text-gray-900 dark:text-white">draft</span>
+<span class="text-sm font-medium text-gray-900 dark:text-white">Q3 Planning Session</span>
+</a>
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base">draft</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Meeting Notes</span>
+</a>
+</div>
+<a class="flex items-center gap-2 py-1.5 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#">
+<span class="material-symbols-outlined text-base">folder</span>
+<span class="text-sm font-normal text-gray-700 dark:text-gray-300">Engineering</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 border-t border-gray-200 dark:border-gray-800 pt-4">
+<a href="../admin_panel_-_users_view/code.html" class="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="Alex Hartman's avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9q5PCGhoC_jYNP5WJkpM3x-evLQLnLht1gQWvndmLFjGs5bhNq-pG5OwMLNB5xWZVGkYkEVQ7RslFPB7M6k1wIgk0BU9dbI4Mi6fA62t_jD91LArb42cMB5WMHjBYOxOc-RcUQHC-IGVWA-Q7Px5pxMQRrV41vzcSCF3TxKjq5i1UCQTBoHpJH6SUXdQwOtzdKyTCOhoRP9fLX-vn5pDn00rTvGysedmt-bf4qLtKRelCNPl13Ifgh7CvQBgk_RfbxlcqQbW8MXI");'></div>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Alex Hartman</p>
+</a>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto">
+<div class="px-8 py-8">
+<div class="relative max-w-4xl mx-auto mb-8">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-2xl">search</span>
+<input onclick="window.location.href='../global_search_command_bar_(overlay)/code.html'" class="w-full h-14 pl-12 pr-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111722] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent text-base cursor-pointer" placeholder="Search, Ask or Do anything..." type="text" readonly/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-md px-2 py-1">Cmd+K</div>
+</div>
+<div class="max-w-4xl mx-auto">
+<div class="px-4">
+<div class="flex flex-wrap gap-2 items-center">
+<a class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-medium leading-normal" href="#">Documents</a>
+<span class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-medium leading-normal">/</span>
+<a class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-medium leading-normal" href="#">Project Alpha</a>
+<span class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-medium leading-normal">/</span>
+<span class="text-text-primary-light dark:text-text-primary-dark text-sm font-medium leading-normal">Q3 Planning Session</span>
+</div>
+</div>
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<h1 class="text-text-primary-light dark:text-text-primary-dark text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Q3 Planning Session</h1>
+</div>
+<article class="prose prose-lg dark:prose-invert max-w-none px-4 space-y-6 text-text-primary-light dark:text-text-primary-dark">
+<p>This document outlines the key discussion points and action items from our Q3 planning session. We will cover budget allocation, feature prioritization, and marketing strategy. Please review the table below for the finalized feature list. For more details on the marketing campaign, see the <a class="text-primary no-underline font-medium" href="#">[[Marketing Strategy Q3]]</a> document. Feel free to mention <span class="text-primary font-medium bg-primary/10 py-0.5 px-1 rounded-md">@UserName</span> with any questions.</p>
+<div class="bg-surface-light dark:bg-surface-dark p-2 rounded-xl border border-border-light dark:border-border-dark">
+<img class="rounded-lg w-full object-cover" data-alt="A team collaborating around a whiteboard with sticky notes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlnb0g1G0GxPr2Ms-OPMzXWv7fs14a46DHPFmFIWAEuG7xsFUnG3iykuzsndtQXH0u3aLbZ_u9BMTjdXR1nTDnzxYxv-UyxH7iNF0HLnuIE47XDLzF6aj1PPQYtLXVFqlvFjgwNqgya6JnUGUmOBZco6tclQQAvBN1ZLd47rAeg3CQUVyR7eRW6cOVGNftimR10PzAQKs-ck5Shd4YndfV6CuZKCH_9SGIuuB-zk4mmVaCFVGSwNy1awhG78jtZ6et-s_j1IpLXkA"/>
+</div>
+<h2 class="text-2xl font-bold">Feature Prioritization</h2>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="border-b border-border-light dark:border-border-dark">
+<tr>
+<th class="p-3 font-semibold">Feature</th>
+<th class="p-3 font-semibold">Team</th>
+<th class="p-3 font-semibold">Status</th>
+<th class="p-3 font-semibold">Due Date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-border-light dark:border-border-dark">
+<td class="p-3">Real-time collaboration</td>
+<td class="p-3">Core Platform</td>
+<td class="p-3"><span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">In Progress</span></td>
+<td class="p-3">Oct 15</td>
+</tr>
+<tr class="border-b border-border-light dark:border-border-dark">
+<td class="p-3">Mobile App V1</td>
+<td class="p-3">Mobile</td>
+<td class="p-3"><span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">Done</span></td>
+<td class="p-3">Sep 30</td>
+</tr>
+<tr>
+<td class="p-3">API Integrations</td>
+<td class="p-3">Core Platform</td>
+<td class="p-3"><span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Planned</span></td>
+<td class="p-3">Nov 20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 class="text-2xl font-bold">Action Items</h2>
+<ul class="list-disc pl-5 space-y-2">
+<li>Finalize budget allocation by end of week.</li>
+<li>Sync with marketing on the launch campaign.</li>
+<li>Prepare technical specification for API integrations.</li>
+</ul>
+<div class="bg-surface-dark rounded-xl p-4 text-sm font-mono text-gray-300">
+<pre><code>function initialize(config) {
+  if (!config.apiKey) {
+    throw new Error("API Key is required.");
+  }
+  // ... initialization logic
+  console.log("WRight Now initialized.");
+}</code></pre>
+</div>
+<div class="relative">
+<p class="text-text-primary-light dark:text-text-primary-dark">This is the final section of our plan. Use the slash command to add more content blocks /<span class="inline-block w-2 h-5 bg-primary animate-pulse ml-px"></span></p>
+<div class="absolute top-full right-0 mt-2 w-72 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl shadow-2xl p-2">
+<div class="text-xs text-text-secondary-light dark:text-text-secondary-dark px-2 py-1 font-semibold uppercase">Blocks</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-primary/10 cursor-pointer">
+<span class="material-symbols-outlined p-1 bg-gray-200 dark:bg-gray-700 rounded-md">title</span>
+<div>
+<p class="font-medium text-sm">Heading 1</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Large section heading</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-primary/10 cursor-pointer">
+<span class="material-symbols-outlined p-1 bg-gray-200 dark:bg-gray-700 rounded-md">format_list_bulleted</span>
+<div>
+<p class="font-medium text-sm">Bulleted list</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Create a simple list</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-primary/10 cursor-pointer">
+<span class="material-symbols-outlined p-1 bg-gray-200 dark:bg-gray-700 rounded-md">image</span>
+<div>
+<p class="font-medium text-sm">Image</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Upload or embed with a link</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</main>
+<aside class="flex-shrink-0 w-72 bg-background-light dark:bg-background-dark border-l border-border-light dark:border-border-dark flex flex-col p-6 space-y-8">
+<div class="flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<img class="inline-block size-8 rounded-full ring-2 ring-background-light dark:ring-background-dark" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD8eTKM3_5c__CwsPUoV5r5zDCA-RdttSBRNg0N_LVis1Lz9SpAmHH16qkgofTYrj3iSU9WxufY0-Zo2v5RMGC4ncPRqiNBgo0T-ATZK9aNKEMzpmDqv2Xveg5j2MIjwYE_Sp6vOs4C_n5Y9hptLo5dFru_xqrA8s0rh7rhX_4l7ZaqYK9_bcTiRvMDkjC-2DlAwxYx7pKv1V3Nomp1bs0tD0tSF7Pra_uBF3W756wje--5hwYEaREfjpMAZW8RFIL6gHDhi2OTZs"/>
+<img class="inline-block size-8 rounded-full ring-2 ring-background-light dark:ring-background-dark" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNuuQwSAtJVexih5iA25Th9k3qL-Q8BwxVEZvFW18UnTJ9gAonXCWcscUzLppGKGYD1Q0E96mnTsCqN5sD-kYmsrfKUjBVM1ogdgKwoBJ-MP7GFMpABuX_vr2VRWY3dZPEZLNHuBnayJYc-1zI5WkhPcEOnsN_JjAuyJ640QpG7RajrteumpQyJWS4_0BLbCfM3FO4c-gjl7-pEN1wNN6464jsecOhojQiGfESwXdqjOlxZJu39MO2jTtphLfhISJ0722MhXSoUeI"/>
+<div class="flex items-center justify-center size-8 rounded-full bg-gray-200 dark:bg-gray-700 ring-2 ring-background-light dark:ring-background-dark text-xs font-semibold">+3</div>
+</div>
+<button class="bg-primary text-white text-sm font-semibold py-2 px-4 rounded-lg flex items-center gap-2 hover:opacity-90">
+<span class="material-symbols-outlined text-base">person_add</span>
+                    Share
+                </button>
+</div>
+<div class="flex-grow">
+<h3 class="text-sm font-semibold text-text-secondary-light dark:text-text-secondary-dark uppercase tracking-wider mb-3">Table of Contents</h3>
+<ul class="space-y-2 text-sm">
+<li><a class="text-primary font-medium hover:underline" href="#">Feature Prioritization</a></li>
+<li><a class="text-text-secondary-light dark:text-text-secondary-dark hover:text-primary dark:hover:text-primary hover:underline" href="#">Action Items</a></li>
+</ul>
+</div>
+<div class="flex-shrink-0 space-y-6">
+<div>
+<h3 class="text-sm font-semibold text-text-secondary-light dark:text-text-secondary-dark uppercase tracking-wider mb-3">Contributors</h3>
+<ul class="space-y-3">
+<li class="flex items-center gap-3">
+<img class="size-8 rounded-full" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx8rSXnS-mWHeG78vj9bQyysieI_hs6oNNpxCuDf1-SwgHZr4BCCvO4hYXjLadtXMdPsoqR3X6_bKqTtzsoQnVVAzA1lY0MH8cAOC2dMj5QtntrAnOVWyG1KZKtVP-YjOHtRhMPlqjalgAaK7vj3M5zXw6Q5AaeAp80s6UxQ1NT6VcnUXK-SD-ft2qonGk0HsaxtQvHAhv5f_UAzakEiw8h84JPBjphagQooIiQ8YfBpBDUG4IiAQ1lUBeeK3H57q93vKeMxks8tE"/>
+<div>
+<p class="font-medium text-sm">Alex Drake</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Author</p>
+</div>
+</li>
+<li class="flex items-center gap-3">
+<img class="size-8 rounded-full" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmZSXNVUxenqka3Ig8bEAEd0eHNXesbDsifrEj1sBfu7jMoOea10YjiBStrATJ-Qqzx6RRmHwRwPd0PeKSjbLy9oL_eV32uckmZKl8k7a8NguRMga8JI4DH-LotJfKNPHedZYk-PVqU9ySjCDur3QussPVEWj9bTj9194PLWoZ_hoqdjZltHrFR-84AQF9zispSViYnDHOn3hwkBI0A5x_tg43j1KF0FSaeiyoNzw3cYMmps01oB1OBBM_2ip4jRVymFFo_pEG6B4"/>
+<div>
+<p class="font-medium text-sm">Casey Lee</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Contributor</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="flex items-center gap-2 text-sm text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined text-base">cloud_done</span>
+<span>All changes saved</span>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

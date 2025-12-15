@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="flex h-screen w-64 flex-col border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111722] p-4 shrink-0">
+            <div class="flex h-full flex-col justify-between">
+                <div class="flex flex-col gap-4">
+                    <a href="../home/code.html" class="flex gap-3 items-center hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg p-2 transition-colors">
+                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" style='background-image: url("../WrightNowLogo.png");'></div>
+                        <div class="flex flex-col">
+                            <h1 class="text-gray-900 dark:text-white text-base font-medium">WRight Now</h1>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Admin</p>
+                        </div>
+                    </a>
+                    
+                    <div class="flex flex-col gap-1 mt-2">
+                        <a class="nav-link flex items-center gap-3 px-3 py-2 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#" data-tab="profile">
+                            <span class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-xl">person</span>
+                            <p class="text-gray-900 dark:text-white text-sm font-medium">Profile</p>
+                        </a>
+                        <a class="nav-link active flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-[#232f48]" href="#" data-tab="users">
+                            <span class="material-symbols-outlined text-primary dark:text-white text-xl">group</span>
+                            <p class="text-primary dark:text-white text-sm font-medium">Users</p>
+                        </a>
+                        <a class="nav-link flex items-center gap-3 px-3 py-2 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#" data-tab="teams">
+                            <span class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-xl">groups</span>
+                            <p class="text-gray-900 dark:text-white text-sm font-medium">Teams</p>
+                        </a>
+                        <a class="nav-link flex items-center gap-3 px-3 py-2 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#" data-tab="security">
+                            <span class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-xl">shield</span>
+                            <p class="text-gray-900 dark:text-white text-sm font-medium">Security</p>
+                        </a>
+                        <a class="nav-link flex items-center gap-3 px-3 py-2 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800/50" href="#" data-tab="billing">
+                            <span class="material-symbols-outlined text-gray-500 dark:text-gray-400 text-xl">credit_card</span>
+                            <p class="text-gray-900 dark:text-white text-sm font-medium">Billing</p>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col gap-1 border-t border-gray-200 dark:border-gray-800 pt-4">
+                    <a href="../home/code.html" class="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg">
+                        <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                            <span class="text-primary font-semibold text-xs">AH</span>
+                        </div>
+                        <p class="text-gray-900 dark:text-white text-sm font-medium">Alex Hartman</p>
+                    </a>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="flex-1 flex flex-col overflow-y-auto p-8">
+            <!-- Search Bar -->
+            <div class="w-full max-w-7xl mx-auto flex-shrink-0 mb-8">
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-2xl">search</span>
+                    <input onclick="window.location.href='../global_search_command_bar_(overlay)/code.html'" class="w-full h-14 pl-12 pr-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#111722] text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:ring-2 focus:ring-primary focus:border-transparent text-base cursor-pointer" placeholder="Search, Ask or Do anything..." type="text" readonly/>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded-md px-2 py-1">Cmd+K</div>
+                </div>
+            </div>
+            
+            <!-- Tab Content Container -->
+            <div class="flex-1 overflow-y-auto">
+                <!-- Profile Tab -->
+                <div id="tab-profile" class="tab-content max-w-2xl mx-auto">
+                    <h1 class="text-2xl font-bold mb-8 text-gray-900 dark:text-white">Profile Settings</h1>
+                    
+                    <div class="mb-8 p-6 bg-white dark:bg-[#1a212f] rounded-xl border border-gray-200 dark:border-gray-700">
+                        <h2 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Profile Photo</h2>
+                        <div class="flex items-center gap-6">
+                            <div class="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center">
+                                <span class="text-primary font-bold text-2xl">AH</span>
+                            </div>
+                            <div>
+                                <button class="h-10 px-4 bg-primary text-white rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors mb-2">
+                                    Upload Photo
+                                </button>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">JPG, PNG or GIF. Max 2MB.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8 p-6 bg-white dark:bg-[#1a212f] rounded-xl border border-gray-200 dark:border-gray-700">
+                        <h2 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Personal Information</h2>
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-900 dark:text-white">First Name</label>
+                                    <input type="text" value="Alex" class="w-full h-11 px-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#192233] text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"/>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Last Name</label>
+                                    <input type="text" value="Hartman" class="w-full h-11 px-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#192233] text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"/>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Email</label>
+                                <input type="email" value="alex@company.com" class="w-full h-11 px-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#192233] text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"/>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2 text-gray-900 dark:text-white">Job Title</label>
+                                <input type="text" value="Product Manager" class="w-full h-11 px-4 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#192233] text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8 p-6 bg-white dark:bg-[#1a212f] rounded-xl border border-gray-200 dark:border-gray-700">
+                        <h2 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Appearance</h2>
+                        <div class="grid grid-cols-3 gap-4">
+                            <button class="p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-primary transition-colors">
+                                <div class="w-full h-16 rounded-lg bg-white border border-gray-200 mb-3"></div>
+                                <p class="text-sm font-medium text-gray-900 dark:text-white">Light</p>
+                            </button>
+                            <button class="p-4 rounded-lg border-2 border-primary bg-primary/5">
+                                <div class="w-full h-16 rounded-lg bg-gray-900 border border-gray-700 mb-3"></div>
+                                <p class="text-sm font-medium text-gray-900 dark:text-white">Dark</p>
+                            </button>
+                            <button class="p-4 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-primary transition-colors">
+                                <div class="w-full h-16 rounded-lg bg-gradient-to-r from-white to-gray-900 border border-gray-300 mb-3"></div>
+                                <p class="text-sm font-medium text-gray-900 dark:text-white">System</p>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-end gap-3">
+                        <button class="h-10 px-4 rounded-lg font-medium text-sm text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            Cancel
+                        </button>
+                        <button class="h-10 px-6 bg-primary text-white rounded-lg font-medium text-sm hover:bg-primary/90 transition-colors">
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Users Tab -->
+                <div id="tab-users" class="tab-content active max-w-7xl mx-auto">
+                    <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+                        <h1 class="text-gray-900 dark:text-white text-3xl font-bold">Users</h1>
+                        <button class="flex items-center justify-center gap-2 h-10 px-4 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90">
+                            <span class="material-symbols-outlined text-base">add</span>
+                            <span>Invite User</span>
+                        </button>
+                    </div>
+                    
+                    <div class="overflow-hidden rounded-lg border border-gray-200 dark:border-[#324467] bg-white dark:bg-[#111722]">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-[#192233]">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Name</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Email</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Role</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Last Active</th>
+                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-[#92a4c9] uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 dark:divide-[#324467]">
+                                <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center gap-3">
+                                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3VKSXBxpsLaD8uLF9cfN_SjRMSKrOEtknOzHQccwAJQt-tntmf2SlN_qIfgcntBVhhpLgukdBNuDJSOb3ZGzFr98hEJtK7wMdepuIF9JvADnuIgg4L03U4e3gGDUE5jniaQbUmJFv8-LvHaUqZQrWr9TQEWsoKjEM_8S8rhtKRpWfBVUuh-IqGdgxb_tDShhlZk1psnXA9rsKFsIj-gxDgKWR56_ZgmogCo5OqSviuBVdtMBfbOHveNWAKtoO_zaK0_qYMnhP1fc");'></div>
+                                            <span class="text-sm font-medium text-gray-900 dark:text-white">Jane Doe</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-[#92a4c9]">jane@company.com</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-[#92a4c9]">Admin</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">
+                                            <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewbox="0 0 8 8"><circle cx="4" cy="4" r="3"></circle></svg>
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-[#92a4c9]">Today</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <button class="text-gray-500 hover:text-primary dark:text-[#92a4c9] dark:hover:text-white">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center gap-3">
+                                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdUbf9P_ftSpgFeDD-j7LdLVEY1qTdMBkfffkC3ZKLX4lff6dIOtfrfvv4u1laQ2lwoY95q8sVf0mUa6FdkDezv7o04mPFW--nfRBKJxuHnkDNzC4YFLNY5OHWqauvI_5KVE1x1hyicGQ1IlCVmJn2X_1jqRr7oztnn6gY-qcFIgxGlUnMWbNafeKYYfX9FmVIENPNdtQ1-BWz7WDRcHBHNxZv-7Fm59cj-gvTHkUyxYSx4vAcneB-ZWIRf1asD6Lf-UnbL8F4vK4");'></div>
+                                            <span class="text-sm font-medium text-gray-900 dark:text-white">John Smith</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-[#92a4c9]">john@company.com</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-[#92a4c9]">Member</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">
+                                            <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-green-400" fill="currentColor" viewbox="0 0 8 8"><circle cx="4" cy="4" r="3"></circle></svg>
+                                            Active
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-[#92a4c9]">2 days ago</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <button class="text-gray-500 hover:text-primary dark:text-[#92a4c9] dark:hover:text-white">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center gap-3">
+                                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDI_K4JnTWqZcX_jJZsllO3NyXgNaHUMEFiEIGzxrkTogeRqosjlZ-evYM0YDevU6khCnRh9HidKwhgumZwQ9z4Pghf_F1E3mIcQDTvLSSGnhRMm2CIGtSMOEQzZ0-bM-hKZEywT1o2ACEjTOEHIVgsR0Ym1fZF_vyV8ZgyspnVzPEAASTyaGN0FQkokUMjjeL4HvLsUQHhmp3fV0CeJzMidVAXGAxmR-ug6Qej-4E_EmfF5YOxBLic2mvj1B6lbSvl8nD9Bb04NiA");'></div>
+                                            <span class="text-sm font-medium text-gray-900 dark:text-white italic">Pending Invite</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-[#92a4c9]">new.user@company.com</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-[#92a4c9]">Member</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300">
+                                            <svg class="-ml-0.5 mr-1.5 h-2 w-2 text-gray-400" fill="currentColor" viewbox="0 0 8 8"><circle cx="4" cy="4" r="3"></circle></svg>
+                                            Invited
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-[#92a4c9]">N/A</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <button class="text-gray-500 hover:text-primary dark:text-[#92a4c9] dark:hover:text-white">
+                                            <span class="material-symbols-outlined">more_vert</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Hide all tabs
+                    document.querySelectorAll('.tab-content').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+                    
+                    // Show selected tab
+                    const selectedTab = document.getElementById('tab-' + tabId);
+                    if (selectedTab) {
+                        selectedTab.classList.add('active');
+                    }
+                    
+                    // Update nav styling
+                    navLinks.forEach(nav => {
+                        nav.classList.remove('active', 'bg-primary/10', 'dark:bg-[#232f48]');
+                        nav.classList.add('text-gray-700', 'dark:text-gray-300');
+                        const icon = nav.querySelector('.material-symbols-outlined');
+                        const text = nav.querySelector('p');
+                        if (icon && text) {
+                            icon.classList.remove('text-primary', 'dark:text-white');
+                            icon.classList.add('text-gray-500', 'dark:text-gray-400');
+                            text.classList.remove('text-primary', 'dark:text-white');
+                            text.classList.add('text-gray-900', 'dark:text-white');
+                        }
+                    });
+                    
+                    // Style active nav
+                    this.classList.add('active', 'bg-primary/10', 'dark:bg-[#232f48]');
+                    this.classList.remove('text-gray-700', 'dark:text-gray-300');
+                    const activeIcon = this.querySelector('.material-symbols-outlined');
+                    const activeText = this.querySelector('p');
+                    if (activeIcon && activeText) {
+                        activeIcon.classList.remove('text-gray-500', 'dark:text-gray-400');
+                        activeIcon.classList.add('text-primary', 'dark:text-white');
+                        activeText.classList.remove('text-gray-900', 'dark:text-white');
+                        activeText.classList.add('text-primary', 'dark:text-white');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
