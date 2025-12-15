@@ -1,0 +1,81 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infrastructure
+  namespace: argocd
+  # Finalizer ensures Application is properly cleaned up
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # Project that this application belongs to
+  project: default
+  
+  # Source configuration - where to get the manifests
+  source:
+    # Git repository URL
+    repoURL: https://github.com/AdityaIndoori/wright-now.git
+    # Target revision (branch, tag, or commit SHA)
+    targetRevision: main
+    # Path within the repository
+    path: k8s/overlays/staging
+  
+  # Destination configuration - where to deploy
+  destination:
+    # Kubernetes cluster URL (in-cluster)
+    server: https://kubernetes.default.svc
+    # Target namespace (will be created if it doesn't exist)
+    namespace: staging-infra
+  
+  # Sync policy configuration
+  syncPolicy:
+    # Automated sync configuration
+    automated:
+      # Automatically sync when Git changes
+      prune: true
+      # Automatically revert manual changes to match Git
+      selfHeal: true
+      # Allow resources to be empty during sync
+      allowEmpty: false
+    
+    # Sync options
+    syncOptions:
+      # Create namespace if it doesn't exist
+      - CreateNamespace=true
+      # Validate resources before applying
+      - Validate=true
+      # Use server-side apply (recommended for complex resources)
+      - ServerSideApply=true
+      # Prune resources propagation policy
+      - PrunePropagationPolicy=foreground
+      # Prune last to avoid race conditions
+      - PruneLast=true
+    
+    # Retry configuration for failed syncs
+    retry:
+      # Maximum number of retry attempts
+      limit: 5
+      # Backoff strategy
+      backoff:
+        # Initial backoff duration
+        duration: 5s
+        # Maximum backoff duration
+        maxDuration: 3m
+        # Backoff factor (exponential)
+        factor: 2
+  
+  # Ignore differences in certain fields
+  ignoreDifferences:
+    # Ignore differences in replicas (for HPA)
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas
+    # Ignore differences in finalizers
+    - group: "*"
+      kind: "*"
+      managedFieldsManagers:
+        - kube-controller-manager
+  
+  # Health assessment configuration
+  # ArgoCD will wait for resources to be healthy before marking sync as complete
+  # This ensures services are actually running before considering deployment successful

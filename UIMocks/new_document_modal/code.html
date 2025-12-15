@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>New Document - WRight Now</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#0f4ed8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a212f",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                        "text-primary-light": "#111827",
+                        "text-primary-dark": "#ffffff",
+                        "text-secondary-light": "#6b7280",
+                        "text-secondary-dark": "#9ca3af",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"></div>
+    
+    <!-- Modal -->
+    <div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="w-full max-w-2xl bg-surface-light dark:bg-surface-dark rounded-2xl shadow-2xl border border-border-light dark:border-border-dark overflow-hidden">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-6 border-b border-border-light dark:border-border-dark">
+                <h2 class="text-xl font-semibold">Create New</h2>
+                <button class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                    <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">close</span>
+                </button>
+            </div>
+            
+            <!-- Content -->
+            <div class="p-6">
+                <!-- Create Options -->
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <!-- New Document -->
+                    <button class="flex flex-col items-center gap-3 p-6 rounded-xl border-2 border-primary bg-primary/5 hover:bg-primary/10 transition-colors">
+                        <div class="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-3xl text-primary">description</span>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-semibold">Blank Document</p>
+                            <p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Start from scratch</p>
+                        </div>
+                    </button>
+                    
+                    <!-- New Folder -->
+                    <button class="flex flex-col items-center gap-3 p-6 rounded-xl border-2 border-border-light dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-colors">
+                        <div class="w-14 h-14 rounded-xl bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-3xl text-yellow-600 dark:text-yellow-400">folder</span>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-semibold">New Folder</p>
+                            <p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Organize your work</p>
+                        </div>
+                    </button>
+                </div>
+                
+                <!-- Templates Section -->
+                <div>
+                    <h3 class="text-sm font-semibold text-text-secondary-light dark:text-text-secondary-dark uppercase tracking-wider mb-4">Start from template</h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <!-- Meeting Notes -->
+                        <button class="flex items-center gap-3 p-4 rounded-lg border border-border-light dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-colors text-left">
+                            <span class="material-symbols-outlined text-2xl text-purple-500">event_note</span>
+                            <div>
+                                <p class="font-medium text-sm">Meeting Notes</p>
+                                <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Agenda & action items</p>
+                            </div>
+                        </button>
+                        
+                        <!-- Project Brief -->
+                        <button class="flex items-center gap-3 p-4 rounded-lg border border-border-light dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-colors text-left">
+                            <span class="material-symbols-outlined text-2xl text-blue-500">rocket_launch</span>
+                            <div>
+                                <p class="font-medium text-sm">Project Brief</p>
+                                <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Goals & timeline</p>
+                            </div>
+                        </button>
+                        
+                        <!-- Technical Spec -->
+                        <button class="flex items-center gap-3 p-4 rounded-lg border border-border-light dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-colors text-left">
+                            <span class="material-symbols-outlined text-2xl text-green-500">code</span>
+                            <div>
+                                <p class="font-medium text-sm">Technical Spec</p>
+                                <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Architecture docs</p>
+                            </div>
+                        </button>
+                        
+                        <!-- Wiki Page -->
+                        <button class="flex items-center gap-3 p-4 rounded-lg border border-border-light dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-colors text-left">
+                            <span class="material-symbols-outlined text-2xl text-orange-500">menu_book</span>
+                            <div>
+                                <p class="font-medium text-sm">Wiki Page</p>
+                                <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Knowledge base</p>
+                            </div>
+                        </button>
+                        
+                        <!-- Onboarding -->
+                        <button class="flex items-center gap-3 p-4 rounded-lg border border-border-light dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-colors text-left">
+                            <span class="material-symbols-outlined text-2xl text-pink-500">waving_hand</span>
+                            <div>
+                                <p class="font-medium text-sm">Onboarding</p>
+                                <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">New hire guide</p>
+                            </div>
+                        </button>
+                        
+                        <!-- Browse All -->
+                        <button class="flex items-center gap-3 p-4 rounded-lg border border-dashed border-border-light dark:border-border-dark hover:border-primary hover:bg-primary/5 transition-colors text-left">
+                            <span class="material-symbols-outlined text-2xl text-text-secondary-light dark:text-text-secondary-dark">grid_view</span>
+                            <div>
+                                <p class="font-medium text-sm">Browse All</p>
+                                <p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">View all templates</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Location -->
+                <div class="mt-6 pt-6 border-t border-border-light dark:border-border-dark">
+                    <label class="block text-sm font-medium mb-2">Save to</label>
+                    <button class="w-full flex items-center justify-between h-11 px-4 rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark hover:border-primary transition-colors">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-xl text-yellow-500">folder</span>
+                            <span class="text-sm">Project Alpha</span>
+                        </div>
+                        <span class="material-symbols-outlined text-text-secondary-light dark:text-text-secondary-dark">expand_more</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="flex items-center justify-end gap-3 p-6 border-t border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark">
+                <button class="h-10 px-4 rounded-lg font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    Cancel
+                </button>
+                <button class="h-10 px-6 bg-primary text-white rounded-lg font-medium text-sm hover:bg-primary-hover transition-colors">
+                    Create
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

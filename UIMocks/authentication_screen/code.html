@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Sign In - WRight Now</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "primary-hover": "#0f4ed8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a212f",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#374151",
+                        "text-primary-light": "#111827",
+                        "text-primary-dark": "#ffffff",
+                        "text-secondary-light": "#6b7280",
+                        "text-secondary-dark": "#9ca3af",
+                        "error": "#dc2626",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark">
+    <div class="relative flex min-h-screen w-full flex-col items-center justify-center p-4">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative z-10 flex w-full max-w-md flex-col items-center rounded-2xl border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark p-8 shadow-xl">
+            <img src="../WrightNowLogo.png" alt="WRight Now Logo" class="w-16 h-16 mb-4 rounded-xl object-cover shadow-lg"/>
+            
+            <h1 class="text-3xl font-bold leading-tight text-center pt-4 pb-2">WRight Now</h1>
+            <p class="text-text-secondary-light dark:text-text-secondary-dark text-base font-normal pb-6 text-center">
+                The 100ms Wiki. All your team's knowledge, instantly searchable.
+            </p>
+            
+            <div class="w-full mb-4">
+                <label class="block text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark mb-2">
+                    Workspace URL
+                </label>
+                <div class="relative">
+                    <input type="text" placeholder="your-company" class="w-full h-12 px-4 pr-32 rounded-xl border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark placeholder:text-text-secondary-light focus:ring-2 focus:ring-primary focus:border-transparent text-base"/>
+                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary-light dark:text-text-secondary-dark text-sm">.wrightnow.app</span>
+                </div>
+            </div>
+            
+            <div class="flex w-full py-3">
+                <a href="../home/code.html" class="flex w-full items-center justify-center rounded-xl h-12 px-5 bg-primary text-white text-base font-semibold transition-all duration-200 hover:bg-primary-hover hover:shadow-lg">
+                    <span class="material-symbols-outlined mr-2 text-xl">login</span>
+                    <span>Sign in with SSO</span>
+                </a>
+            </div>
+            
+            <div class="flex items-center gap-4 w-full py-4">
+                <div class="flex-1 h-px bg-border-light dark:bg-border-dark"></div>
+                <span class="text-text-secondary-light dark:text-text-secondary-dark text-sm">or</span>
+                <div class="flex-1 h-px bg-border-light dark:bg-border-dark"></div>
+            </div>
+            
+            <div class="flex w-full gap-3">
+                <button class="flex flex-1 items-center justify-center rounded-xl h-12 px-4 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-text-primary-light dark:text-text-primary-dark text-sm font-medium transition-colors hover:bg-background-light dark:hover:bg-background-dark">
+                    <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Google
+                </button>
+                <button class="flex flex-1 items-center justify-center rounded-xl h-12 px-4 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark text-text-primary-light dark:text-text-primary-dark text-sm font-medium transition-colors hover:bg-background-light dark:hover:bg-background-dark">
+                    <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </button>
+            </div>
+            
+            <p class="text-text-secondary-light dark:text-text-secondary-dark text-xs text-center mt-6">
+                By signing in, you agree to our 
+                <a href="#" class="text-primary hover:underline">Terms of Service</a> 
+                and 
+                <a href="#" class="text-primary hover:underline">Privacy Policy</a>
+            </p>
+            
+            <div class="flex items-center gap-2 mt-4 text-text-secondary-light dark:text-text-secondary-dark text-xs">
+                <span class="material-symbols-outlined text-sm">lock</span>
+                <span>Powered by Authentik</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

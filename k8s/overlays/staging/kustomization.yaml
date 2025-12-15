@@ -1,0 +1,70 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Namespace where staging infrastructure will be deployed
+namespace: staging-infra
+
+# Common labels applied to all resources
+commonLabels:
+  environment: staging
+  managed-by: argocd
+
+# Resources from base directory
+resources:
+  # Namespace definitions
+  - ../../base/namespaces/staging-infra.yaml
+  - ../../base/namespaces/staging-core.yaml
+  - ../../base/namespaces/staging-ai.yaml
+  - ../../base/namespaces/staging-web.yaml
+  
+  # PostgreSQL database
+  - ../../base/postgres/configmap.yaml
+  - ../../base/postgres/secrets.example.yaml
+  - ../../base/postgres/service.yaml
+  - ../../base/postgres/statefulset.yaml
+  
+  # Redis cache
+  - ../../base/redis/pvc.yaml
+  - ../../base/redis/deployment.yaml
+  - ../../base/redis/service.yaml
+  
+  # Authentik IdP
+  - ../../base/authentik/postgres-statefulset.yaml
+  - ../../base/authentik/postgres-service.yaml
+  - ../../base/authentik/redis-deployment.yaml
+  - ../../base/authentik/redis-service.yaml
+  - ../../base/authentik/pvcs.yaml
+  - ../../base/authentik/server-deployment.yaml
+  - ../../base/authentik/worker-deployment.yaml
+  - ../../base/authentik/services.yaml
+  - ../../base/authentik/secrets.example.yaml
+  - ../../base/authentik/ingress.yaml
+  
+  # NGINX Ingress Controller
+  - ../../base/ingress/nginx-ingress-controller.yaml
+
+# Images to use (will be updated by CI/CD pipeline)
+# images:
+#   - name: core-backend
+#     newName: ghcr.io/adityaindoori/wright-now/core-backend
+#     newTag: latest
+#   - name: ai-service
+#     newName: ghcr.io/adityaindoori/wright-now/ai-service
+#     newTag: latest
+#   - name: web-client
+#     newName: ghcr.io/adityaindoori/wright-now/web-client
+#     newTag: latest
+
+# ConfigMap generator (for environment-specific configs)
+# configMapGenerator:
+#   - name: app-config
+#     literals:
+#       - ENVIRONMENT=staging
+#       - LOG_LEVEL=debug
+
+# Secret generator (for environment-specific secrets)
+# Note: Actual secrets should be managed via sealed-secrets or external secrets
+# secretGenerator:
+#   - name: app-secrets
+#     literals:
+#       - DATABASE_URL=postgresql://user:pass@postgres:5432/db
